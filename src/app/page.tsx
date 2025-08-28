@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import About from "./About/page";
 
 export default function Home() {
   const letters = [
@@ -24,7 +25,8 @@ export default function Home() {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
+    <>
+    <section id="Home" className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
 
 {/* Social Media Icons */}
 <motion.div
@@ -189,5 +191,7 @@ export default function Home() {
 
       </div>
     </section>
+    <About/>
+    </>
   );
 }

@@ -5,8 +5,8 @@ import { button } from "framer-motion/client";
 
 export default function Navbar() {
   const navItem = [
-    { name: "Home", id: "Home-section" },
-    { name: "About", id: "About-section" },
+    { name: "Home", id: "Home" },
+    { name: "About", id: "about" },
     { name: "Projects", id: "Projects-section" },
     { name: "Contact", id: "Contact-section" },
   ];
