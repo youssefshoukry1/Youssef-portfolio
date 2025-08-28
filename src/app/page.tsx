@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa";
 
 export default function Home() {
   const letters = [
@@ -27,36 +26,66 @@ export default function Home() {
   return (
     <section className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
 
-     {/* Social Media Icons */}
+{/* Social Media Icons */}
 <motion.div
-  className="absolute lg:top-11 lg:right-6 top-9 
-             flex items-center justify-center gap-6 
-             p-4 rounded-2xl border border-cyan-400/40
-             bg-white/5 backdrop-blur-md shadow-lg"
+  className="absolute lg:top-11 lg:right-6 top-9 right-6 z-30"
   initial={{ opacity: 0, y: -20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1, delay: 0.6 }}
 >
-  <motion.div
-    className="absolute inset-0 rounded-2xl border-2 border-cyan-500/20"
-    animate={{ rotate: 360 }}
-    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-  />
+  <div
+    className="relative flex items-center justify-center gap-6 
+               p-4 rounded-2xl border border-cyan-400/40
+               bg-white/5 backdrop-blur-md shadow-lg"
+  >
+    {/* ديكور دوّار لكن بدون تفاعل */}
+    <motion.div
+      className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-cyan-500/20 z-0"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+    />
 
-  <a href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="text-3xl w-full text-cyan-400 hover:scale-125 transition-transform">
-    <FaLinkedin />
-  </a>
-  <a href="https://wa.me/+2001204470794" target="_blank" className="text-3xl w-full text-green-400 hover:scale-125 transition-transform">
-    <FaWhatsapp />
-  </a>
-  <a href="https://www.facebook.com/share/16sNdwRsQt/" target="_blank" className="text-3xl w-full text-blue-500 hover:scale-125 transition-transform">
-    <FaFacebook />
-  </a>
+    {/* الأيقونات فوق الديكور */}
+    <div className="relative z-10 flex items-center gap-6">
+      <a
+        href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center w-12 h-12 text-3xl text-cyan-400 
+                   hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
+      >
+        <FaLinkedin />
+      </a>
+
+      {/* مهم: رقم واتساب بدون علامة + */}
+      <a
+        href="https://wa.me/201204470794"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center w-12 h-12 text-3xl text-green-400 
+                   hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
+      >
+        <FaWhatsapp />
+      </a>
+
+      <a
+        href="https://www.facebook.com/share/16sNdwRsQt/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center w-12 h-12 text-3xl text-blue-500 
+                   hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
+      >
+        <FaFacebook />
+      </a>
+    </div>
+  </div>
 </motion.div>
+
+
 
       {/* الصورة */}
       <motion.div
-        className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 flex items-center justify-center"
+        className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-70 lg:h-80 flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.8, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -111,7 +140,7 @@ export default function Home() {
          {/* زر السهم لتحت */}
 <motion.button
   onClick={scrollToAbout}
-  className="relative mt-12 w-16 h-16 flex items-center justify-center rounded-full 
+  className="relative mt-12 w-15 h-16 flex items-center justify-center rounded-full 
              border border-violet-500/50 bg-black/20 backdrop-blur-sm text-white
              shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500"
   whileHover={{ scale: 1.12 }}
