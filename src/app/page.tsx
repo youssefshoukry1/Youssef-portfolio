@@ -28,14 +28,14 @@ export default function Home() {
 
 {/* Social Media Icons */}
 <motion.div
-  className="absolute lg:top-11 lg:right-6 top-9 right-6 z-30"
+  className="absolute lg:top-11 lg:right-6 top-10 right-6 z-30"
   initial={{ opacity: 0, y: -20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1, delay: 0.6 }}
 >
   <div
     className="relative flex items-center justify-center gap-6 
-               p-4 rounded-2xl border border-cyan-400/40
+               lg:p-4 p-2 rounded-2xl border border-cyan-400/40
                bg-white/5 backdrop-blur-md shadow-lg"
   >
     {/* ديكور دوّار لكن بدون تفاعل */}
@@ -46,12 +46,12 @@ export default function Home() {
     />
 
     {/* الأيقونات فوق الديكور */}
-    <div className="relative z-10 flex items-center gap-6">
+    <div className="relative z-10 flex items-center lg:gap-6 gap-4">
       <a
         href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-12 h-12 text-3xl text-cyan-400 
+        className="flex items-center justify-center lg:w-12 lg:h-12 w-9 h-9 text-3xl text-cyan-400 
                    hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
       >
         <FaLinkedin />
@@ -62,7 +62,7 @@ export default function Home() {
         href="https://wa.me/201204470794"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-12 h-12 text-3xl text-green-400 
+        className="flex items-center justify-center lg:w-12 lg:h-12 w-9 h-9 text-3xl text-green-400 
                    hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
       >
         <FaWhatsapp />
@@ -72,7 +72,7 @@ export default function Home() {
         href="https://www.facebook.com/share/16sNdwRsQt/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-12 h-12 text-3xl text-blue-500 
+        className="flex items-center justify-center lg:w-12 lg:h-12 w-9 h-9 text-3xl text-blue-500 
                    hover:scale-125 transition-transform duration-300 cursor-pointer focus-visible:scale-125"
       >
         <FaFacebook />
@@ -85,7 +85,7 @@ export default function Home() {
 
       {/* الصورة */}
       <motion.div
-        className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-70 lg:h-80 flex items-center justify-center"
+        className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.8, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
