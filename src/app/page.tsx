@@ -43,13 +43,13 @@ export default function Home() {
     transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
   />
 
-  <a href="https://linkedin.com" target="_blank" className="text-3xl block text-cyan-400 hover:scale-125 transition-transform">
+  <a href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="text-3xl w-full text-cyan-400 hover:scale-125 transition-transform">
     <FaLinkedin />
   </a>
-  <a href="https://wa.me/" target="_blank" className="text-3xl block text-green-400 hover:scale-125 transition-transform">
+  <a href="https://wa.me/+2001204470794" target="_blank" className="text-3xl w-full text-green-400 hover:scale-125 transition-transform">
     <FaWhatsapp />
   </a>
-  <a href="https://facebook.com" target="_blank" className="text-3xl block text-blue-500 hover:scale-125 transition-transform">
+  <a href="https://www.facebook.com/share/16sNdwRsQt/" target="_blank" className="text-3xl w-full text-blue-500 hover:scale-125 transition-transform">
     <FaFacebook />
   </a>
 </motion.div>

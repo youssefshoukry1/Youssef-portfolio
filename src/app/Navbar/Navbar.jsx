@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion as Motion } from "framer-motion";
+import { button } from "framer-motion/client";
 
 export default function Navbar() {
   const navItem = [
@@ -44,7 +45,8 @@ export default function Navbar() {
           animate="visible"
         >
           {navItem.map(({ name, id }) => (
-            <Motion.li
+            <button>
+               <Motion.li
               key={id}
               variants={itemVariants}
               className="relative group text-white lg:text-xl text-sm font-semibold cursor-pointer 
@@ -55,6 +57,8 @@ export default function Navbar() {
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-400 
                                transition-all duration-300 group-hover:w-full"></span>
             </Motion.li>
+            </button>
+           
           ))}
         </Motion.ul>
       </div>
