@@ -35,7 +35,7 @@ export default function About() {
       {/* الديكور الدوار حوالين السكشن */}
       <motion.div
         className="absolute inset-0 rounded-3xl border-2 border-cyan-500/20 z-0"
-        whileInView={{ rotate: 360 }}
+        animate={{ rotate: 360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
           {/* المحتوى */}
