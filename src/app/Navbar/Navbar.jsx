@@ -46,19 +46,20 @@ export default function Navbar() {
         >
           {navItem.map(({ name, id }) => (
             <button>
-               <Motion.li
-              key={id}
-              variants={itemVariants}
-              className="relative group text-white lg:text-xl text-sm font-semibold cursor-pointer 
-                         hover:text-cyan-300 transition-colors duration-300"
-              onClick={() => handleScroll(id)}
-            >
-              {name}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-400 
-                               transition-all duration-300 group-hover:w-full"></span>
-            </Motion.li>
+              <Motion.li
+
+                key={id}
+                variants={itemVariants}
+                className="relative group text-white lg:text-xl text-sm font-semibold cursor-pointer 
+                    hover:text-cyan-300 transition-colors duration-300"
+                onClick={() => handleScroll(id)}
+              >
+                {name}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-cyan-400 to-purple-400 
+                    transition-all duration-300 group-hover:w-full"></span>
+              </Motion.li>
             </button>
-           
+
           ))}
         </Motion.ul>
       </div>

@@ -35,7 +35,7 @@ export default function Home() {
 >
   <div
     className="relative flex items-center justify-center gap-6 
-               lg:p-4 p-2 rounded-2xl border border-cyan-400/40
+                p-2 rounded-2xl border border-cyan-400/40
                bg-white/5 backdrop-blur-md shadow-lg"
   >
     {/* ديكور دوّار لكن بدون تفاعل */}
