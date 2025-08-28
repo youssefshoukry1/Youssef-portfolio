@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-center items-center">
         {/* Menu (Desktop + Mobile نفس الشكل) */}
         <Motion.ul
-          className="flex gap-6 sm:gap-10 uppercase tracking-wide"
+          className="flex gap-6 sm:gap-10 tracking-wide"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -47,7 +47,7 @@ export default function Navbar() {
             <Motion.li
               key={id}
               variants={itemVariants}
-              className="relative group text-white lg:text-base text-sm font-semibold cursor-pointer 
+              className="relative group text-white lg:text-xl text-sm font-semibold cursor-pointer 
                          hover:text-cyan-300 transition-colors duration-300"
               onClick={() => handleScroll(id)}
             >

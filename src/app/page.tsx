@@ -2,7 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDownIcon } from "@heroicons/react/24/outline"; // أيقونة سهم جاهزة
+import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 
 export default function Home() {
   const letters = [
@@ -16,7 +17,6 @@ export default function Home() {
     { char: "d", color: "text-emerald-400" },
   ];
 
-  // فنكشن السكرول
   const scrollToAbout = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
@@ -25,47 +25,64 @@ export default function Home() {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden">
-      {/* الصورة */}
-  {/* الصورة */}
-{/* الصورة */}
+    <section className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
+
+     {/* Social Media Icons */}
 <motion.div
-  className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 flex items-center justify-center"
-  initial={{ opacity: 0, scale: 0.8, y: 40 }}
-  animate={{ opacity: 1, scale: 1, y: 0 }}
-  transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+  className="absolute lg:top-11 lg:right-6 top-9 
+             flex items-center justify-center gap-6 
+             p-4 rounded-2xl border border-cyan-400/40
+             bg-white/5 backdrop-blur-md shadow-lg"
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, delay: 0.6 }}
 >
-  {/* دوائر متحركة مع Fade In */}
   <motion.div
-    className="absolute w-full h-full rounded-full border-4 border-cyan-400"
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{
-      opacity: [0, 0.6, 0.3, 0.6],
-      scale: [0.8, 1, 1.2, 1],
-    }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-  />
-  <motion.div
-    className="absolute w-[115%] h-[115%] rounded-full border-4 border-purple-500"
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{
-      opacity: [0, 0.5, 0.2, 0.5],
-      scale: [0.8, 1, 1.3, 1],
-    }}
-    transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+    className="absolute inset-0 rounded-2xl border-2 border-cyan-500/20"
+    animate={{ rotate: 360 }}
+    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
   />
 
-  {/* الصورة نفسها */}
-  <Image
-    className="rounded-full object-cover shadow-[0_0_40px_rgba(59,130,246,0.6)]"
-    src="/Ofaa7.webp"
-    alt="My Photo"
-    fill
-    sizes="(max-width: 768px) 160px, (max-width: 1200px) 256px, 320px"
-  />
+  <a href="https://linkedin.com" target="_blank" className="text-3xl block text-cyan-400 hover:scale-125 transition-transform">
+    <FaLinkedin />
+  </a>
+  <a href="https://wa.me/" target="_blank" className="text-3xl block text-green-400 hover:scale-125 transition-transform">
+    <FaWhatsapp />
+  </a>
+  <a href="https://facebook.com" target="_blank" className="text-3xl block text-blue-500 hover:scale-125 transition-transform">
+    <FaFacebook />
+  </a>
 </motion.div>
 
-      {/* العنوان والنص */}
+      {/* الصورة */}
+      <motion.div
+        className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 flex items-center justify-center"
+        initial={{ opacity: 0, scale: 0.8, y: 40 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+      >
+        <motion.div
+          className="absolute w-full h-full rounded-full border-4 border-cyan-400"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: [0, 0.6, 0.3, 0.6], scale: [0.8, 1, 1.2, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute w-[115%] h-[115%] rounded-full border-4 border-purple-500"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: [0, 0.5, 0.2, 0.5], scale: [0.8, 1, 1.3, 1] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+        />
+        <Image
+          className="rounded-full object-cover shadow-[0_0_40px_rgba(59,130,246,0.6)]"
+          src="/Ofaa7.webp"
+          alt="My Photo"
+          fill
+          sizes="(max-width: 768px) 160px, (max-width: 1200px) 256px, 320px"
+        />
+      </motion.div>
+
+      {/* العنوان */}
       <div className="flex flex-col items-center lg:items-start gap-4 sm:gap-6 text-center lg:text-left relative">
         <h1 className="font-extrabold text-2xl sm:text-5xl lg:text-7xl flex flex-wrap gap-1">
           {letters.map((l, i) => (
@@ -91,7 +108,7 @@ export default function Home() {
           I design and build modern responsive websites.
         </motion.p>
 
-        {/* زر السهم لتحت */}
+         {/* زر السهم لتحت */}
 <motion.button
   onClick={scrollToAbout}
   className="relative mt-12 w-16 h-16 flex items-center justify-center rounded-full 
@@ -140,10 +157,6 @@ export default function Home() {
     </motion.svg>
   </div>
 </motion.button>
-
-
-
-
 
       </div>
     </section>
