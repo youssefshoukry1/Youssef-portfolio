@@ -30,7 +30,6 @@ export default function Page() {
 
   // Projects Slider
   const ProjectsSlider = ({ items }: { items: { img: string; href: string }[] }) => {
-    const initialSlide = Math.floor(items.length / 2);
 
     return (
       <Swiper
@@ -39,7 +38,7 @@ export default function Page() {
        
         speed={700}
         centeredSlides={false}
-        initialSlide={initialSlide}
+        initialSlide={0}
         slidesPerView="auto"
         coverflowEffect={{
           rotate: 45,
@@ -87,16 +86,13 @@ export default function Page() {
       loopedItems = Array.from({ length: repeatTimes }, () => items).flat();
     }
 
-    const initialSlide = Math.floor(loopedItems.length / 2);
-
     return (
       <Swiper
         effect="coverflow"
         grabCursor
-        
         speed={700}
-        centeredSlides={true}
-        initialSlide={initialSlide}
+        centeredSlides={false}
+        initialSlide={0}
         slidesPerView={1.2}
         coverflowEffect={{
           rotate: 45,
