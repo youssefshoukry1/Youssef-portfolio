@@ -66,8 +66,8 @@ const Slider = ({
       className="w-[95%] max-w-6xl z-10"
       watchSlidesProgress={true}
       breakpoints={{
-        320: { slidesPerView: type === "projects" ? 1.2 : 1.1, spaceBetween: -40 },
-        480: { slidesPerView: type === "projects" ? 2 : 1.2, spaceBetween: -20 },
+        320: { slidesPerView: type === "portfolios" ? 1.2 : 1.1, spaceBetween: -40 },
+        480: { slidesPerView: type === "portfolios" ? 2 : 1.2, spaceBetween: -20 },
         768: { slidesPerView: 3, spaceBetween: -20 },
         1024: { slidesPerView: 3, spaceBetween: -10 },
         1280: { slidesPerView: 3, spaceBetween: 0 },
