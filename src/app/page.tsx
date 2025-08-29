@@ -27,6 +27,46 @@ export default function Home() {
   return (
     <>
     <section id="Home" className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
+      {/* Background geometric animation */}
+{/* Geometric animated background */}
+<motion.svg
+  className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+  viewBox="0 0 800 600"
+  preserveAspectRatio="xMidYMid slice"
+>
+  {Array.from({ length: 30 }).map((_, i) => {
+    const cx = Math.random() * 800;
+    const cy = Math.random() * 600;
+    const r = 1 + Math.random() * 3;
+    const dur = 10 + Math.random() * 20;
+    return (
+      <motion.circle
+        key={i}
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill="url(#grad)"
+        animate={{
+          cx: [cx, cx + 50, cx - 50, cx],
+          cy: [cy, cy + 50, cy - 50, cy],
+        }}
+        transition={{
+          duration: dur,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    );
+  })}
+
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
+      <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2" />
+    </linearGradient>
+  </defs>
+</motion.svg>
+
 
 {/* Social Media Icons */}
 <motion.div
