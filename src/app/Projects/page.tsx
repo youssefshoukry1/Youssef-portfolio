@@ -87,7 +87,7 @@ export default function Page() {
                           transition-all duration-500`}
             >
               <Image
-                src={type === "projects" ? card.img : card.img2}
+                src={type === "projects" ? card.img ?? "" : card.img2 ?? ""}
                 alt={`${type === "projects" ? "Project" : "Portfolio"} ${index}`}
                 fill
                 className="object-cover"
