@@ -12,7 +12,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 export default function Page() {
-  // Data
   const projects = [
     { img: "/ecomeerce.webp", href: "https://ecommerce-project.vercel.app/" },
     { img: "/food.webp", href: "https://food-project.vercel.app/" },
@@ -28,58 +27,53 @@ export default function Page() {
     { img: "/shery.webp", href: "https://shery-portfolio-eta.vercel.app/" },
   ];
 
-  // Projects Slider
-  const ProjectsSlider = ({ items }: { items: { img: string; href: string }[] }) => {
-
-    return (
-      <Swiper
-        effect="coverflow"
-        grabCursor
-       
-        speed={700}
-        centeredSlides={false}
-        initialSlide={0}
-        slidesPerView="auto"
-        coverflowEffect={{
-          rotate: 45,
-          stretch: -30,
-          depth: 300,
-          modifier: 2.5,
-          slideShadows: true,
-        }}
-        modules={[EffectCoverflow, Pagination]}
-        pagination={{ clickable: true }}
-        className="w-[95%] max-w-6xl z-10"
-        breakpoints={{
-          320: { slidesPerView: 1.2, spaceBetween: -60 },
-          480: { slidesPerView: 2, spaceBetween: -60 },
-          768: { slidesPerView: 3, spaceBetween: -20 },
-          1024: { slidesPerView: 3, spaceBetween: -10 },
-          1280: { slidesPerView: 3, spaceBetween: 0 },
-        }}
-      >
-        {items.map((card, index) => (
-          <SwiperSlide key={index} className="!w-[260px]">
-            <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
+  const ProjectsSlider = ({ items }: { items: { img: string; href: string }[] }) => (
+    <Swiper
+      effect="coverflow"
+      grabCursor
+      speed={700}
+      centeredSlides={false}
+      initialSlide={0}
+      slidesPerView="auto"
+      coverflowEffect={{
+        rotate: 45,
+        stretch: -30,
+        depth: 300,
+        modifier: 2.5,
+        slideShadows: true,
+      }}
+      modules={[EffectCoverflow, Pagination]}
+      pagination={{ clickable: true }}
+      className="w-[95%] max-w-6xl z-10"
+      breakpoints={{
+        320: { slidesPerView: 1.2, spaceBetween: -60 },
+        480: { slidesPerView: 2, spaceBetween: -60 },
+        768: { slidesPerView: 3, spaceBetween: -20 },
+        1024: { slidesPerView: 3, spaceBetween: -10 },
+        1280: { slidesPerView: 3, spaceBetween: 0 },
+      }}
+    >
+      {items.map((card, index) => (
+        <SwiperSlide key={index} className="!w-[260px]">
+          <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] bg-white/5 backdrop-blur-md transition-all duration-500 transform-gpu"
+                className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] transition-all duration-500 transform-gpu"
               >
                 <Image src={card.img} alt={`Project ${index}`} fill className="object-cover" />
               </motion.div>
-            </a>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    );
-  };
+            </div>
+          </a>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
 
-  // Portfolios Slider
   const PortfoliosSlider = ({ items }: { items: { img: string; href: string }[] }) => {
-    // نكرر العناصر لتجنب loop warning لو عددهم قليل
     let loopedItems = items;
     if (items.length < 4) {
       const repeatTimes = Math.ceil(5 / items.length);
@@ -115,15 +109,17 @@ export default function Page() {
         {loopedItems.map((card, index) => (
           <SwiperSlide key={index} className="!w-[260px]">
             <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] mx-auto rounded-xl overflow-hidden border border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] bg-white/5 backdrop-blur-md transition-all duration-500 transform-gpu"
-              >
-                <Image src={card.img} alt={`Portfolio ${index}`} fill className="object-cover" />
-              </motion.div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] mx-auto rounded-xl overflow-hidden border border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
+                >
+                  <Image src={card.img} alt={`Portfolio ${index}`} fill className="object-cover" />
+                </motion.div>
+              </div>
             </a>
           </SwiperSlide>
         ))}
