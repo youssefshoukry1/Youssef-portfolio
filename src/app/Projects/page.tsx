@@ -2,15 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCoverflow } from "swiper/modules";
 import { motion } from "framer-motion";
 
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 export default function Page() {
+  // Data
   const projects = [
     { img: "/ecomeerce.webp", href: "https://ecommerce-project.vercel.app/" },
     { img: "/food.webp", href: "https://food-project.vercel.app/" },
@@ -27,13 +29,14 @@ export default function Page() {
   ];
 
   // Slider Component
-  const Slider = ({
-    items,
-    type,
-  }: {
-    items: any[];
-    type: "projects" | "portfolios";
-  }) => (
+ const Slider = ({
+  items,
+  type,
+}: {
+  items: { img?: string; img2?: string; href: string }[];
+  type: "projects" | "portfolios";
+}) => 
+ (
     <Swiper
       effect="coverflow"
       grabCursor
@@ -62,69 +65,35 @@ export default function Page() {
     >
       {items.map((card, index) => (
         <SwiperSlide key={index} className="!w-[260px]">
-          {type === "projects" ? (
-            <a
-              href={card.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
+          <a
+            href={card.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
+              className={`relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] 
+                          mx-auto rounded-xl overflow-hidden
+                          border ${type === "projects" ? "border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)]" : "border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"} 
+                          bg-white/5 backdrop-blur-md 
+                          transition-all duration-500`}
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.1,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: true }}
-                className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] 
-                           mx-auto rounded-xl overflow-hidden
-                           border border-cyan-400/40 bg-white/5 backdrop-blur-md 
-                           shadow-[0_0_35px_rgba(56,189,248,0.5)]
-                           hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] 
-                           transition-all duration-500"
-              >
-                <Image
-                  src={card.img}
-                  alt={`Project ${index}`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            </a>
-          ) : (
-            <a
-              href={card.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.1,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: true }}
-                className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] 
-                           mx-auto rounded-xl overflow-hidden
-                           border border-violet-400/40 bg-white/5 backdrop-blur-md 
-                           shadow-[0_0_35px_rgba(139,92,246,0.5)]
-                           hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] 
-                           transition-all duration-500"
-              >
-                <Image
-                  src={card.img2}
-                  alt={`Portfolio ${index}`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            </a>
-          )}
+              <Image
+                src={type === "projects" ? card.img : card.img2}
+                alt={`${type === "projects" ? "Project" : "Portfolio"} ${index}`}
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </a>
         </SwiperSlide>
       ))}
     </Swiper>
