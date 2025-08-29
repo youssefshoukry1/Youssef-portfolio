@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import About from "./About/page";
+import Projects from "./Projects/page";
 
 export default function Home() {
   const letters = [
@@ -232,6 +233,7 @@ export default function Home() {
       </div>
     </section>
     <About/>
+    <Projects/>
     </>
   );
 }
