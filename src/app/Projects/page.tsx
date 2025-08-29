@@ -28,31 +28,31 @@ export default function Page() {
   ];
 
   const ProjectsSlider = ({ items }: { items: { img: string; href: string }[] }) => (
-    <Swiper
-      effect="coverflow"
-      grabCursor
-      speed={700}
-      centeredSlides={false}
-      initialSlide={0}
-      slidesPerView="auto"
-      coverflowEffect={{
-        rotate: 45,
-        stretch: -30,
-        depth: 300,
-        modifier: 2.5,
-        slideShadows: true,
-      }}
-      modules={[EffectCoverflow, Pagination]}
-      pagination={{ clickable: true }}
-      className="w-[95%] max-w-6xl z-10"
-      breakpoints={{
-        320: { slidesPerView: 1.2, spaceBetween: -60 },
-        480: { slidesPerView: 2, spaceBetween: -60 },
-        768: { slidesPerView: 3, spaceBetween: -20 },
-        1024: { slidesPerView: 3, spaceBetween: -10 },
-        1280: { slidesPerView: 3, spaceBetween: 0 },
-      }}
-    >
+   <Swiper
+  effect="coverflow"
+  grabCursor
+  speed={700}
+  centeredSlides={true} // هنا نخليها true
+  initialSlide={0}
+  slidesPerView={3} // نحدد عدد slides ثابت على الكمبيوتر
+  coverflowEffect={{
+    rotate: 45,
+    stretch: -30,
+    depth: 300,
+    modifier: 2.5,
+    slideShadows: true,
+  }}
+  modules={[EffectCoverflow, Pagination]}
+  pagination={{ clickable: true }}
+  className="w-[95%] max-w-6xl z-10"
+  breakpoints={{
+    320: { slidesPerView: 1.2, spaceBetween: -60 },
+    480: { slidesPerView: 2, spaceBetween: -60 },
+    768: { slidesPerView: 2, spaceBetween: -20 },
+    1024: { slidesPerView: 3, spaceBetween: -10 },
+    1280: { slidesPerView: 3, spaceBetween: 0 },
+  }}
+>
       {items.map((card, index) => (
         <SwiperSlide key={index} className="!w-[260px]">
           <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
@@ -81,31 +81,32 @@ export default function Page() {
     }
 
     return (
-      <Swiper
-        effect="coverflow"
-        grabCursor
-        speed={700}
-        centeredSlides={false}
-        initialSlide={0}
-        slidesPerView={1.2}
-        coverflowEffect={{
-          rotate: 45,
-          stretch: -30,
-          depth: 300,
-          modifier: 2.5,
-          slideShadows: true,
-        }}
-        modules={[EffectCoverflow, Pagination]}
-        pagination={{ clickable: true }}
-        className="w-[95%] max-w-6xl z-10"
-        breakpoints={{
-          320: { slidesPerView: 1.2, spaceBetween: -60 },
-          480: { slidesPerView: 1.2, spaceBetween: -60 },
-          768: { slidesPerView: 2, spaceBetween: -20 },
-          1024: { slidesPerView: 3, spaceBetween: -10 },
-          1280: { slidesPerView: 3, spaceBetween: 0 },
-        }}
-      >
+   <Swiper
+  effect="coverflow"
+  grabCursor
+  speed={700}
+  centeredSlides={true} // هنا نخليها true
+  initialSlide={0}
+  slidesPerView={3} // نحدد عدد slides ثابت على الكمبيوتر
+  coverflowEffect={{
+    rotate: 45,
+    stretch: -30,
+    depth: 300,
+    modifier: 2.5,
+    slideShadows: true,
+  }}
+  modules={[EffectCoverflow, Pagination]}
+  pagination={{ clickable: true }}
+  className="w-[95%] max-w-6xl z-10"
+  breakpoints={{
+    320: { slidesPerView: 1.2, spaceBetween: -60 },
+    480: { slidesPerView: 2, spaceBetween: -60 },
+    768: { slidesPerView: 2, spaceBetween: -20 },
+    1024: { slidesPerView: 3, spaceBetween: -10 },
+    1280: { slidesPerView: 3, spaceBetween: 0 },
+  }}
+>
+
         {loopedItems.map((card, index) => (
           <SwiperSlide key={index} className="!w-[260px]">
             <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
