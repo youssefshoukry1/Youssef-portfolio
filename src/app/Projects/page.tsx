@@ -36,13 +36,14 @@ const Slider = ({
   items: { img: string; href: string }[];
   type: "projects" | "portfolios";
 }) => {
-  // نكرر العناصر لو عددها قليل لتجنب مشاكل loop
-  const loopedItems =
-    items.length < 4 && type === "portfolios"
-      ? [...items, ...items] 
-      : items;
+  // نكرر العناصر لتجنب مشاكل loop
+  let loopedItems = items;
+  if (type === "portfolios" && items.length < 4) {
+    // نكرر العناصر أكثر من مرة بحيث عدد slides أكبر من slidesPerView
+    const repeatTimes = Math.ceil(5 / items.length); // 5 تقريبًا عدد آمن
+    loopedItems = Array.from({ length: repeatTimes }, () => items).flat();
+  }
 
-  // نحدد البداية من منتصف المصفوفة
   const initialSlide = Math.floor(loopedItems.length / 2);
 
   return (
@@ -51,13 +52,13 @@ const Slider = ({
       grabCursor
       loop={loopedItems.length > 3}
       speed={700}
-      centeredSlides={true} // يبدأ من النص
-      initialSlide={initialSlide} // هنا البداية من النص
+      centeredSlides={true}
+      initialSlide={initialSlide}
       slidesPerView={type === "projects" ? "auto" : 1.2}
       coverflowEffect={{
-        rotate: 45,
+        rotate: 50,
         stretch: 0,
-        depth: 300,
+        depth: 400,
         modifier: 2.5,
         slideShadows: true,
       }}
@@ -66,8 +67,8 @@ const Slider = ({
       className="w-[95%] max-w-6xl z-10"
       watchSlidesProgress={true}
       breakpoints={{
-        320: { slidesPerView: type === "portfolios" ? 1.2 : 1.1, spaceBetween: -40 },
-        480: { slidesPerView: type === "portfolios" ? 2 : 1.2, spaceBetween: -20 },
+        320: { slidesPerView: type === "projects" ? 1.2 : 1, spaceBetween: -40 },
+        480: { slidesPerView: type === "projects" ? 2 : 1.1, spaceBetween: -20 },
         768: { slidesPerView: 3, spaceBetween: -20 },
         1024: { slidesPerView: 3, spaceBetween: -10 },
         1280: { slidesPerView: 3, spaceBetween: 0 },
@@ -75,12 +76,7 @@ const Slider = ({
     >
       {loopedItems.map((card, index) => (
         <SwiperSlide key={index} className="!w-[260px]">
-          <a
-            href={card.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
+          <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -98,14 +94,11 @@ const Slider = ({
                               : "border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"
                           } 
                           bg-white/5 backdrop-blur-md 
-                          transition-all duration-500`}
+                          transition-all duration-500
+                          transform-gpu
+                          backdrop-filter backdrop-blur-sm`}
             >
-              <Image
-                src={card.img}
-                alt={`${type === "projects" ? "Project" : "Portfolio"} ${index}`}
-                fill
-                className="object-cover"
-              />
+              <Image src={card.img} alt={`${type === "projects" ? "Project" : "Portfolio"} ${index}`} fill className="object-cover" />
             </motion.div>
           </a>
         </SwiperSlide>
@@ -113,6 +106,8 @@ const Slider = ({
     </Swiper>
   );
 };
+
+
 
 
 
