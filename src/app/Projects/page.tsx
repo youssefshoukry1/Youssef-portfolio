@@ -22,32 +22,41 @@ export default function Page() {
   ];
 
   const portfolios = [
-    { img2: "/marcen.webp", href: "https://portfolio-marcelino.vercel.app/" },
-    { img2: "/joyce.webp", href: "https://joyce-portfolio-five.vercel.app/" },
-    { img2: "/emy.webp", href: "https://protofilo-sable.vercel.app/" },
-    { img2: "/shery.webp", href: "https://shery-portfolio-eta.vercel.app/" },
+    { img: "/marcen.webp", href: "https://portfolio-marcelino.vercel.app/" },
+    { img: "/joyce.webp", href: "https://joyce-portfolio-five.vercel.app/" },
+    { img: "/emy.webp", href: "https://protofilo-sable.vercel.app/" },
+    { img: "/shery.webp", href: "https://shery-portfolio-eta.vercel.app/" },
   ];
 
   // Slider Component
- const Slider = ({
+const Slider = ({
   items,
   type,
 }: {
-  items: { img?: string; img2?: string; href: string }[];
+  items: { img: string; href: string }[];
   type: "projects" | "portfolios";
-}) => 
- (
+}) => {
+  // نكرر العناصر لو عددها قليل لتجنب مشاكل loop
+  const loopedItems =
+    items.length < 4 && type === "portfolios"
+      ? [...items, ...items] 
+      : items;
+
+  // نحدد البداية من منتصف المصفوفة
+  const initialSlide = Math.floor(loopedItems.length / 2);
+
+  return (
     <Swiper
       effect="coverflow"
       grabCursor
-      loop={true}
+      loop={loopedItems.length > 3}
       speed={700}
-      centeredSlides={true}
-      slidesPerView={"auto"}
-      initialSlide={0}
+      centeredSlides={true} // يبدأ من النص
+      initialSlide={initialSlide} // هنا البداية من النص
+      slidesPerView={type === "projects" ? "auto" : 1.2}
       coverflowEffect={{
         rotate: 45,
-        stretch: -30,
+        stretch: 0,
         depth: 300,
         modifier: 2.5,
         slideShadows: true,
@@ -55,15 +64,16 @@ export default function Page() {
       modules={[EffectCoverflow, Pagination]}
       pagination={{ clickable: true }}
       className="w-[95%] max-w-6xl z-10"
+      watchSlidesProgress={true}
       breakpoints={{
-        320: { slidesPerView: 1.2, spaceBetween: -60 },
-        480: { slidesPerView: 2, spaceBetween: -60 },
+        320: { slidesPerView: type === "projects" ? 1.2 : 1.1, spaceBetween: -40 },
+        480: { slidesPerView: type === "projects" ? 2 : 1.2, spaceBetween: -20 },
         768: { slidesPerView: 3, spaceBetween: -20 },
         1024: { slidesPerView: 3, spaceBetween: -10 },
         1280: { slidesPerView: 3, spaceBetween: 0 },
       }}
     >
-      {items.map((card, index) => (
+      {loopedItems.map((card, index) => (
         <SwiperSlide key={index} className="!w-[260px]">
           <a
             href={card.href}
@@ -82,12 +92,16 @@ export default function Page() {
               viewport={{ once: true }}
               className={`relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[280px] md:h-[280px] 
                           mx-auto rounded-xl overflow-hidden
-                          border ${type === "projects" ? "border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)]" : "border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"} 
+                          border ${
+                            type === "projects"
+                              ? "border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)]"
+                              : "border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"
+                          } 
                           bg-white/5 backdrop-blur-md 
                           transition-all duration-500`}
             >
               <Image
-                src={type === "projects" ? card.img ?? "" : card.img2 ?? ""}
+                src={card.img}
                 alt={`${type === "projects" ? "Project" : "Portfolio"} ${index}`}
                 fill
                 className="object-cover"
@@ -98,6 +112,10 @@ export default function Page() {
       ))}
     </Swiper>
   );
+};
+
+
+
 
   return (
     <section
