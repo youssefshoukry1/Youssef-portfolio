@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
     <section id="Home" className="flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-6 sm:gap-10 px-4 sm:px-10 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden relative">
-      {/* Background geometric animation */}
+      
 {/* Geometric animated background */}
 <motion.svg
   className="absolute inset-0 w-full h-full z-0 pointer-events-none"
