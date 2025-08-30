@@ -19,7 +19,7 @@ export default function Home() {
   ];
 
   const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
+    const aboutSection = document.getElementById("About");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
