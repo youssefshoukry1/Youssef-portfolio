@@ -33,13 +33,13 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={0}
-  slidesPerView={3} // نحدد عدد slides ثابت على الكمبيوتر
+  initialSlide={50}
+  slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
-    rotate: 45,
+    rotate: 35,
     stretch: -30,
     depth: 300,
-    modifier: 2.5,
+    modifier: 1.5,
     slideShadows: true,
   }}
   modules={[EffectCoverflow, Pagination]}
@@ -49,8 +49,8 @@ export default function Page() {
     320: { slidesPerView: 1.2, spaceBetween: -60 },
     480: { slidesPerView: 2, spaceBetween: -60 },
     768: { slidesPerView: 2, spaceBetween: -20 },
-    1024: { slidesPerView: 3, spaceBetween: -10 },
-    1280: { slidesPerView: 3, spaceBetween: 0 },
+    1024: { slidesPerView: 5, spaceBetween: 0 },
+    1280: { slidesPerView: 4, spaceBetween: 0 },
   }}
 >
       {items.map((card, index) => (
@@ -86,13 +86,13 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={0}
-  slidesPerView={3} // نحدد عدد slides ثابت على الكمبيوتر
+  initialSlide={50}
+  slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 45,
     stretch: -20,
-    depth: 0,
-    modifier: 2.5,
+    depth: 300,
+    modifier:1.5,
     slideShadows: true,
   }}
   modules={[EffectCoverflow, Pagination]}
@@ -102,8 +102,8 @@ export default function Page() {
     320: { slidesPerView: 1.2, spaceBetween: -60 },
     480: { slidesPerView: 2, spaceBetween: -60 },
     768: { slidesPerView: 2, spaceBetween: -20 },
-    1024: { slidesPerView: 3, spaceBetween: -10 },
-    1280: { slidesPerView: 3, spaceBetween: 0 },
+    1024: { slidesPerView: 4, spaceBetween: -10 },
+    1280: { slidesPerView: 4, spaceBetween: 0 },
   }}
 >
 
