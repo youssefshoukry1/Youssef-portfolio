@@ -90,8 +90,8 @@ export default function Page() {
   slidesPerView={3} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 45,
-    stretch: -30,
-    depth: 300,
+    stretch: -20,
+    depth: 0,
     modifier: 2.5,
     slideShadows: true,
   }}
