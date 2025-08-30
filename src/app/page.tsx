@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import About from "./About/page";
 import Projects from "./Projects/page";
+import Contact from "./Contact/page";
 
 export default function Home() {
   const letters = [
@@ -156,7 +157,7 @@ export default function Home() {
 
       {/* العنوان */}
       <div className="flex flex-col items-center lg:items-start gap-4 sm:gap-6 text-center lg:text-left relative">
-        <h1 className="font-extrabold text-2xl sm:text-5xl lg:text-7xl flex flex-wrap gap-1 shadow-2xl">
+        <h1 className="font-extrabold text-2xl sm:text-5xl lg:text-7xl flex flex-wrap gap-1 ">
           {letters.map((l, i) => (
             <motion.span
               key={i}
@@ -234,6 +235,7 @@ export default function Home() {
     </section>
     <About/>
     <Projects/>
+    <Contact/>
     </>
   );
 }
