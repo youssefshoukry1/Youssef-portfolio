@@ -33,7 +33,7 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={50}
+  initialSlide={0}
   slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 35,
@@ -86,7 +86,7 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={50}
+  initialSlide={0}
   slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 45,
