@@ -33,7 +33,7 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={0}
+  initialSlide={2}
   slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 35,
@@ -86,7 +86,7 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={0}
+  initialSlide={1}
   slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 45,
@@ -129,30 +129,78 @@ export default function Page() {
   };
 
   return (
-    <section id="projects" className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden">
-      {/* Projects */}
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-extraboldt bg-clip-text text-white drop-shadow-lg -mb-10 z-10"
-      >
-        <span className="text-indigo-400">P  </span>r <span className="text-pink-400">o </span> j<span className="text-teal-400"> e</span> c <span className="text-cyan-400">t</span> s
-      </motion.h1>
-      <ProjectsSlider items={projects} />
+<section
+  id="projects"
+  className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden"
+>
+  {/* Geometric animated background with scaling and rotation */}
+  <motion.svg
+    className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+    viewBox="0 0 800 600"
+    preserveAspectRatio="xMidYMid slice"
+  >
+    {Array.from({ length: 30 }).map((_, i) => {
+      const cx = Math.random() * 800;
+      const cy = Math.random() * 600;
+      const r = 1 + Math.random() * 3;
+      const dur = 10 + Math.random() * 20;
+      const scaleDur = 5 + Math.random() * 5;
+      const rotateDur = 10 + Math.random() * 10;
+      return (
+        <motion.circle
+          key={i}
+          cx={cx}
+          cy={cy}
+          r={r}
+          fill="url(#grad)"
+          animate={{
+            cx: [cx, cx + 50, cx - 50, cx],
+            cy: [cy, cy + 50, cy - 50, cy],
+            scale: [0.8, 1, 1.2, 1],
+            rotate: [0, 45, -45, 0],
+          }}
+          transition={{
+            duration: dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      );
+    })}
 
-      {/* Portfolios */}
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-30 lg:mb-10 -mt-10 -mb-10  z-10"
-      >
-        <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl">f</span>o<span className="text-cyan-400">i</span>ls
-      </motion.h1>
-      <PortfoliosSlider items={portfolios} />
-    </section>
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
+        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2" />
+      </linearGradient>
+    </defs>
+  </motion.svg>
+
+  {/* Projects */}
+  <motion.h1
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true }}
+    className="text-4xl sm:text-5xl font-extraboldt bg-clip-text text-white drop-shadow-lg -mb-10 z-10"
+  >
+    <span className="text-indigo-400">P  </span>r <span className="text-pink-400">o </span> j<span className="text-teal-400"> e</span> c <span className="text-cyan-400">t</span> s
+  </motion.h1>
+  <ProjectsSlider items={projects} />
+
+  {/* Portfolios */}
+  <motion.h1
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true }}
+    className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-30 lg:mb-10 -mt-10 -mb-10  z-10"
+  >
+    <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl">f</span>o<span className="text-cyan-400">i</span>ls
+  </motion.h1>
+  <PortfoliosSlider items={portfolios} />
+</section>
+
+
   );
 }
