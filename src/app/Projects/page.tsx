@@ -33,7 +33,7 @@ export default function Page() {
   grabCursor
   speed={700}
   centeredSlides={true} // هنا نخليها true
-  initialSlide={2}
+  initialSlide={1}
   slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
   coverflowEffect={{
     rotate: 35,
@@ -133,19 +133,18 @@ export default function Page() {
   id="projects"
   className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden"
 >
-  {/* Geometric animated background with scaling and rotation */}
+  {/* Floating bubbles */}
   <motion.svg
     className="absolute inset-0 w-full h-full z-0 pointer-events-none"
     viewBox="0 0 800 600"
     preserveAspectRatio="xMidYMid slice"
   >
+    {/* Bubbles */}
     {Array.from({ length: 30 }).map((_, i) => {
       const cx = Math.random() * 800;
       const cy = Math.random() * 600;
       const r = 1 + Math.random() * 3;
       const dur = 10 + Math.random() * 20;
-      const scaleDur = 5 + Math.random() * 5;
-      const rotateDur = 10 + Math.random() * 10;
       return (
         <motion.circle
           key={i}
@@ -154,10 +153,40 @@ export default function Page() {
           r={r}
           fill="url(#grad)"
           animate={{
-            cx: [cx, cx + 50, cx - 50, cx],
-            cy: [cy, cy + 50, cy - 50, cy],
+            cy: [cy, cy - 50, cy + 50, cy],
             scale: [0.8, 1, 1.2, 1],
-            rotate: [0, 45, -45, 0],
+          }}
+          transition={{
+            duration: dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      );
+    })}
+
+    {/* Geometric rectangles (tech vibe) */}
+    {Array.from({ length: 20 }).map((_, i) => {
+      const x = Math.random() * 750;
+      const y = Math.random() * 550;
+      const w = 15 + Math.random() * 40;
+      const h = 10 + Math.random() * 25;
+      const dur = 12 + Math.random() * 10;
+      return (
+        <motion.rect
+          key={i}
+          x={x}
+          y={y}
+          width={w}
+          height={h}
+          rx={3}
+          ry={3}
+          fill="url(#grad)"
+          opacity={0.1}
+          animate={{
+            x: [x, x + 30, x - 30, x],
+            y: [y, y + 20, y - 20, y],
+            rotate: [0, 15, -15, 0],
           }}
           transition={{
             duration: dur,
@@ -176,7 +205,7 @@ export default function Page() {
     </defs>
   </motion.svg>
 
-  {/* Projects */}
+  {/* Projects title and sliders */}
   <motion.h1
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -188,7 +217,6 @@ export default function Page() {
   </motion.h1>
   <ProjectsSlider items={projects} />
 
-  {/* Portfolios */}
   <motion.h1
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -196,10 +224,18 @@ export default function Page() {
     viewport={{ once: true }}
     className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-30 lg:mb-10 -mt-10 -mb-10  z-10"
   >
-    <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl">f</span>o<span className="text-cyan-400">i</span>ls
+    <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-6xl lg:text-7xl">f</span>o<span className="text-cyan-400">i</span>ls
   </motion.h1>
   <PortfoliosSlider items={portfolios} />
 </section>
+
+
+
+
+
+
+
+
 
 
   );
