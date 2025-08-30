@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <section
-      id="about"
+      id="About"
       className="relative flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-10 px-6 sm:px-12
                  bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
     >

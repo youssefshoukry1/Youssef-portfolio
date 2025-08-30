@@ -129,7 +129,7 @@ export default function Page() {
   };
 
   return (
-    <section className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden">
+    <section id="projects" className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden">
       {/* Projects */}
       <motion.h1
         initial={{ opacity: 0, y: 40 }}
