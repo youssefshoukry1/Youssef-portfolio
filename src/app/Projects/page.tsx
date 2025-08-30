@@ -136,9 +136,9 @@ export default function Page() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 text-transparent bg-clip-text drop-shadow-lg -mb-10 z-10"
+        className="text-4xl sm:text-5xl font-extraboldt bg-clip-text text-white drop-shadow-lg -mb-10 z-10"
       >
-        Projects
+        <span className="text-indigo-400">P  </span>r <span className="text-pink-400">o </span> j<span className="text-teal-400"> e</span> c <span className="text-cyan-400">t</span> s
       </motion.h1>
       <ProjectsSlider items={projects} />
 
@@ -150,7 +150,7 @@ export default function Page() {
         viewport={{ once: true }}
         className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-30 lg:mb-10 -mt-10 -mb-10  z-10"
       >
-        Portfolios
+        <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl">f</span>o<span className="text-cyan-400">i</span>ls
       </motion.h1>
       <PortfoliosSlider items={portfolios} />
     </section>
