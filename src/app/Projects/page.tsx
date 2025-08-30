@@ -13,11 +13,11 @@ import "swiper/css/pagination";
 
 export default function Page() {
   const projects = [
-    { img: "/ecomeerce.webp", href: "https://ecommerce-project.vercel.app/" },
-    { img: "/food.webp", href: "https://food-project.vercel.app/" },
-    { img: "/to-do.webp", href: "https://to-do-project.vercel.app/" },
+    { img: "/ecomeerce.webp", href: "http://ecommerce-cwzh.vercel.app" },
+    { img: "/food.webp", href: "https://final-food-app-xi.vercel.app/" },
+    { img: "/to-do.webp", href: "https://to-do-list-0.vercel.app/" },
     { img: "/weather.webp", href: "https://weather-flft.vercel.app/" },
-    { img: "/x&o.webp", href: "https://xo-project.vercel.app/" },
+    { img: "/x&o.webp", href: "https://x-o-rose.vercel.app/" },
   ];
 
   const portfolios = [
@@ -128,6 +128,8 @@ export default function Page() {
     );
   };
 
+
+
   return (
 <section
   id="projects"
@@ -228,15 +230,6 @@ export default function Page() {
   </motion.h1>
   <PortfoliosSlider items={portfolios} />
 </section>
-
-
-
-
-
-
-
-
-
 
   );
 }
