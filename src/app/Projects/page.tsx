@@ -54,7 +54,7 @@ export default function Page() {
   }}
 >
       {items.map((card, index) => (
-        <SwiperSlide key={index} className="!w-[260px]">
+        <SwiperSlide key={index} className="w-[260px]">
           <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
               <motion.div
@@ -108,7 +108,7 @@ export default function Page() {
 >
 
         {loopedItems.map((card, index) => (
-          <SwiperSlide key={index} className="!w-[260px]">
+          <SwiperSlide key={index} className="w-[260px]">
             <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
                 <motion.div
