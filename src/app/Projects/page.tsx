@@ -108,7 +108,7 @@ export default function Page() {
 >
 
         {loopedItems.map((card, index) => (
-          <SwiperSlide key={index} className="w-[260px]">
+          <SwiperSlide key={index} className="w-[290px]">
             <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
                 <motion.div
@@ -116,7 +116,7 @@ export default function Page() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="relative w-[250px] h-[190px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40 shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
+                  className="relative w-[250px] h-[190px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40  shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
                 >
                   <Image src={card.img} alt={`Portfolio ${index}`} fill className="object-cover" />
                 </motion.div>
@@ -224,7 +224,7 @@ export default function Page() {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, ease: "easeOut" }}
     viewport={{ once: true }}
-    className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-30 lg:mb-10 -mt-10 -mb-10  z-10"
+    className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-36 lg:mb-0 -mt-10 -mb-10  z-10"
   >
     <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl lg:text-6xl">f</span>o<span className="text-cyan-400">i</span>ls
   </motion.h1>

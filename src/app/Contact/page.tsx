@@ -1,11 +1,318 @@
-import React from 'react'
+"use client";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { FaLinkedin, FaWhatsapp, FaFacebook, FaEnvelope } from "react-icons/fa";
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState(false);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setDone(true);
+          form.current?.reset();
+        },
+        () => {
+          setLoading(false);
+          setError(true);
+        }
+      );
+  };
+
   return (
-    <section className=' h-screen w-full flex justify-center items-center'>
-        <form className=''>
-            <input type="text" className='bg-amber-400'/>
-        </form>
+    <section
+      id="Contact"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 
+                 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
+    >
+      {/* نفس الخلفية المتحركة بتاعت Home */}
+      <motion.svg
+        className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        {Array.from({ length: 25 }).map((_, i) => {
+          const cx = Math.random() * 800;
+          const cy = Math.random() * 600;
+          const r = 1 + Math.random() * 3;
+          const dur = 12 + Math.random() * 15;
+          return (
+            <motion.circle
+              key={i}
+              cx={cx}
+              cy={cy}
+              r={r}
+              fill="url(#grad2)"
+              animate={{
+                cx: [cx, cx + 40, cx - 40, cx],
+                cy: [cy, cy + 40, cy - 40, cy],
+              }}
+              transition={{
+                duration: dur,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          );
+        })}
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2" />
+          </linearGradient>
+        </defs>
+      </motion.svg>
+
+   {/* العنوان */}
+<div className="relative flex flex-col items-center mb-20">
+  <motion.h2
+    initial={{ opacity: 0, y: -40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
+  >
+    Contact <span className="text-cyan-400">Me</span>
+  </motion.h2>
+
+  {/* خيوط مضيئة حوالين الكلمة */}
+  <motion.svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 500 200"
+    className="absolute top-1/2 -translate-y-1/2 w-[170%] h-56 pointer-events-none"
+  >
+    {/* خط موف مضيء */}
+    <motion.path
+      d="M 50 100 
+         C 120 20, 380 20, 450 100 
+         C 380 180, 120 180, 50 100 Z"
+      stroke="url(#purpleGlow)"
+      strokeWidth="3"
+      fill="transparent"
+      animate={{
+        pathLength: [0.7, 1, 0.7],
+        opacity: [0.5, 1, 0.5],
+      }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    {/* خط أزرق مضيء */}
+    <motion.path
+      d="M 80 100 
+         C 160 40, 340 40, 420 100 
+         C 340 160, 160 160, 80 100 Z"
+      stroke="url(#blueGlow)"
+      strokeWidth="3"
+      fill="transparent"
+      animate={{
+        pathLength: [0.6, 1, 0.6],
+        opacity: [0.5, 1, 0.5],
+      }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    {/* Gradients + Glow */}
+    <defs>
+      <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
+        <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
+      </linearGradient>
+      <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
+        <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
+      </linearGradient>
+    </defs>
+  </motion.svg>
+</div>
+<motion.div
+  className="absolute -z-0 rounded-full border-2 border-purple-500/50"
+  initial={{ scale: 0.8, opacity: 0.6 }}
+  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.6, 1, 0.6] }}
+  transition={{ duration: 4, repeat: Infinity }}
+  style={{ width: "250px", height: "250px" }}
+/>
+
+<motion.div
+  className="absolute -z-0 rounded-full border-2 border-cyan-400/50"
+  initial={{ scale: 1, opacity: 0.6 }}
+  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+  transition={{ duration: 6, repeat: Infinity }}
+  style={{ width: "300px", height: "300px" }}
+/>
+      {/* الفورم */}
+      <motion.form
+        ref={form}
+        onSubmit={sendEmail}
+        className="flex flex-col gap-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl 
+                   border border-cyan-400/30 shadow-xl w-full max-w-lg relative z-10"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+        />
+
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows={5}
+          required
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 resize-none"
+        />
+<motion.button
+  type="submit"
+  disabled={loading}
+  className={`relative mt-4 py-3 px-6 rounded-lg font-semibold text-white 
+              border border-violet-500/50 bg-black/20 backdrop-blur-sm 
+              shadow-[0_0_20px_rgba(139,92,246,0.6)] 
+              transition-all duration-500 w-full
+              ${loading ? "cursor-not-allowed opacity-60" : ""}`}
+  whileHover={!loading ? { scale: 1.05 } : {}}
+  whileTap={!loading ? { scale: 0.95 } : {}}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  {/* جلو خارجي بيلف حوالين الزرار */}
+  {!loading && (
+    <motion.span
+      className="absolute inset-0 rounded-lg border-2 border-transparent 
+                 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
+                 opacity-30 blur-lg"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    />
+  )}
+
+  {/* النص */}
+  <span className="relative z-10">
+    {loading ? "Sending..." : "Send Message"}
+  </span>
+</motion.button>
+      </motion.form>
+
+      {/* Social icons بنفس ستايل Home */}
+      <motion.div
+        className="relative flex items-center justify-center gap-6 
+                   p-3 rounded-2xl border border-cyan-400/40
+                   bg-white/5 backdrop-blur-md shadow-lg mt-10 z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.div
+          className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-cyan-500/20 z-0"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+        />
+        <div className="relative z-10 flex items-center gap-6">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            className="flex items-center justify-center w-10 h-10 text-2xl text-cyan-400 
+                       hover:scale-125 transition-transform duration-300"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            className="flex items-center justify-center w-10 h-10 text-2xl text-green-400 
+                       hover:scale-125 transition-transform duration-300"
+          >
+            <FaWhatsapp />
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            className="flex items-center justify-center w-10 h-10 text-2xl text-blue-500 
+                       hover:scale-125 transition-transform duration-300"
+          >
+            <FaFacebook />
+          </a>
+          <a
+            href="mailto:test@email.com"
+            target="_blank"
+            className="flex items-center justify-center w-10 h-10 text-2xl text-red-400 
+                       hover:scale-125 transition-transform duration-300"
+          >
+            <FaEnvelope />
+          </a>
+        </div>
+      </motion.div>
+
+      {/* مودالات */}
+      {done && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-cyan-400/30 
+                       shadow-xl text-center text-white w-80"
+          >
+            <h3 className="text-xl font-semibold mb-4">Message Sent ✅</h3>
+            <button
+              onClick={() => setDone(false)}
+              className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
+                         rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Close
+            </button>
+          </motion.div>
+        </div>
+      )}
+
+      {error && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-cyan-400/30 
+                       shadow-xl text-center text-white w-80"
+          >
+            <h3 className="text-xl font-semibold mb-4">Something went wrong ❌</h3>
+            <button
+              onClick={() => setError(false)}
+              className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
+                         rounded-lg font-semibold hover:opacity-90 transition"
+            >
+              Close
+            </button>
+          </motion.div>
+        </div>
+      )}
     </section>
-  )
+  );
 }
