@@ -8,7 +8,7 @@ export default function Navbar() {
     { name: "Home", id: "Home" },
     { name: "About", id: "About" },
     { name: "Projects", id: "projects" },
-    { name: "Contact", id: "Contact-section" },
+    { name: "Contact", id: "Contact" },
   ];
 
   const [active, setActive] = useState("Home");
