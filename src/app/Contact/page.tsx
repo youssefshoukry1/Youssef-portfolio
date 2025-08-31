@@ -82,65 +82,78 @@ export default function Contact() {
 
    {/* العنوان */}
 <div className="relative flex flex-col items-center mb-20">
-  <motion.h2
-    initial={{ opacity: 0, y: -40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1 }}
-    className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
+
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+    variants={{
+      hidden: { opacity: 0, y: 40 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          staggerChildren: 0.15,
+          duration: 1,
+          ease: "easeOut",
+        },
+      },
+    }}
+    className="flex flex-col items-center relative z-10"
   >
-    Contact <span className="text-cyan-400">Me</span>
-  </motion.h2>
-
-  {/* خيوط مضيئة حوالين الكلمة */}
-  <motion.svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 500 200"
-    className="absolute top-1/2 -translate-y-1/2 w-[170%] h-56 pointer-events-none"
-  >
-    {/* خط موف مضيء */}
-    <motion.path
-      d="M 50 100 
-         C 120 20, 380 20, 450 100 
-         C 380 180, 120 180, 50 100 Z"
-      stroke="url(#purpleGlow)"
-      strokeWidth="3"
-      fill="transparent"
-      animate={{
-        pathLength: [0.7, 1, 0.7],
-        opacity: [0.5, 1, 0.5],
+    <motion.h2
+      variants={{
+        hidden: { opacity: 0, y: -40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
       }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-    />
+      className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
+    >
+      Contact <span className="text-cyan-400">M<span className="text-purple-400">e</span></span>
+    </motion.h2>
 
-    {/* خط أزرق مضيء */}
-    <motion.path
-      d="M 80 100 
-         C 160 40, 340 40, 420 100 
-         C 340 160, 160 160, 80 100 Z"
-      stroke="url(#blueGlow)"
-      strokeWidth="3"
-      fill="transparent"
-      animate={{
-        pathLength: [0.6, 1, 0.6],
-        opacity: [0.5, 1, 0.5],
-      }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-    />
+    {/* الخيوط المضيئة */}
+    <motion.svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 500 200"
+      className="absolute top-1/2 -translate-y-1/2 w-[170%] h-56 pointer-events-none"
+    >
+      <motion.path
+        d="M 50 100 C 120 20, 380 20, 450 100 C 380 180, 120 180, 50 100 Z"
+        stroke="url(#purpleGlow)"
+        strokeWidth="3"
+        fill="transparent"
+        animate={{
+          pathLength: [0.7, 1, 0.7],
+          opacity: [0.5, 1, 0.5],
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-    {/* Gradients + Glow */}
-    <defs>
-      <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
-        <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
-      </linearGradient>
-      <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
-        <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
-      </linearGradient>
-    </defs>
-  </motion.svg>
+      <motion.path
+        d="M 80 100 C 160 40, 340 40, 420 100 C 340 160, 160 160, 80 100 Z"
+        stroke="url(#blueGlow)"
+        strokeWidth="3"
+        fill="transparent"
+        animate={{
+          pathLength: [0.6, 1, 0.6],
+          opacity: [0.5, 1, 0.5],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <defs>
+        <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
+          <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
+        </linearGradient>
+        <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
+          <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
+        </linearGradient>
+      </defs>
+    </motion.svg>
+  </motion.div>
 </div>
-
       {/* الفورم */}
       <motion.form
         ref={form}
@@ -148,7 +161,7 @@ export default function Contact() {
         className="flex flex-col gap-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl 
                    border border-cyan-400/30 shadow-xl w-full max-w-lg relative z-10"
         initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
         <input
@@ -188,7 +201,7 @@ export default function Contact() {
   whileHover={!loading ? { scale: 1.05 } : {}}
   whileTap={!loading ? { scale: 0.95 } : {}}
   initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
+  whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, ease: "easeOut" }}
 >
 
