@@ -38,7 +38,7 @@ export default function Contact() {
 
   return (
     <section
-      id="Contact"
+      id="contact"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 
                  bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
     >
