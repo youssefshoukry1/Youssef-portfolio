@@ -140,21 +140,7 @@ export default function Contact() {
     </defs>
   </motion.svg>
 </div>
-<motion.div
-  className="absolute -z-0 rounded-full border-2 border-purple-500/50"
-  initial={{ scale: 0.8, opacity: 0.6 }}
-  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.6, 1, 0.6] }}
-  transition={{ duration: 4, repeat: Infinity }}
-  style={{ width: "250px", height: "250px" }}
-/>
 
-<motion.div
-  className="absolute -z-0 rounded-full border-2 border-cyan-400/50"
-  initial={{ scale: 1, opacity: 0.6 }}
-  animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
-  transition={{ duration: 6, repeat: Infinity }}
-  style={{ width: "300px", height: "300px" }}
-/>
       {/* الفورم */}
       <motion.form
         ref={form}
@@ -205,16 +191,7 @@ export default function Contact() {
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8, ease: "easeOut" }}
 >
-  {/* جلو خارجي بيلف حوالين الزرار */}
-  {!loading && (
-    <motion.span
-      className="absolute inset-0 rounded-lg border-2 border-transparent 
-                 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
-                 opacity-30 blur-lg"
-      animate={{ rotate: 360 }}
-      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-    />
-  )}
+
 
   {/* النص */}
   <span className="relative z-10">
