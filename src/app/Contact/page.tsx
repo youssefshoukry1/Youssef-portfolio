@@ -229,7 +229,7 @@ export default function Contact() {
         />
         <div className="relative z-10 flex items-center gap-6">
           <a
-            href="https://linkedin.com"
+        href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-cyan-400 
                        hover:scale-125 transition-transform duration-300"
@@ -237,7 +237,7 @@ export default function Contact() {
             <FaLinkedin />
           </a>
           <a
-            href="https://wa.me/"
+        href="https://wa.me/201204470794"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-green-400 
                        hover:scale-125 transition-transform duration-300"
@@ -245,7 +245,7 @@ export default function Contact() {
             <FaWhatsapp />
           </a>
           <a
-            href="https://facebook.com"
+        href="https://www.facebook.com/share/16sNdwRsQt/"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-blue-500 
                        hover:scale-125 transition-transform duration-300"
@@ -253,7 +253,7 @@ export default function Contact() {
             <FaFacebook />
           </a>
           <a
-            href="mailto:test@email.com"
+            href="mailto:ofaashoukry@email.com"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-red-400 
                        hover:scale-125 transition-transform duration-300"
@@ -285,7 +285,7 @@ export default function Contact() {
       )}
 
       {error && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+        <div className="fixed inset-0 f`lex items-center justify-center bg-black/70 z-50">
           <motion.div
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
