@@ -129,8 +129,10 @@ export default function Page() {
   };
 
   // New: generate bubbles and rectangles only on client
-  const [bubbles, setBubbles] = useState<any[]>([]);
-  const [rects, setRects] = useState<any[]>([]);
+  type Bubble = { cx: number; cy: number; r: number; dur: number };
+  type Rect = { x: number; y: number; w: number; h: number; dur: number };
+  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [rects, setRects] = useState<Rect[]>([]);
 
   useEffect(() => {
     setBubbles(

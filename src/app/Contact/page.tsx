@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { FaLinkedin, FaWhatsapp, FaFacebook, FaEnvelope } from "react-icons/fa";
@@ -9,6 +9,20 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState(false);
+
+  // 💡 لتجنب مشكلة hydration
+  const [circles, setCircles] = useState<{ cx: number; cy: number; r: number; dur: number }[]>([]);
+
+  useEffect(() => {
+    setCircles(
+      Array.from({ length: 25 }).map(() => ({
+        cx: Math.random() * 800,
+        cy: Math.random() * 600,
+        r: 1 + Math.random() * 3,
+        dur: 12 + Math.random() * 15,
+      }))
+    );
+  }, []);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,36 +56,30 @@ export default function Contact() {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 
                  bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
     >
-      {/* نفس الخلفية المتحركة بتاعت Home */}
+      {/* الخلفية المتحركة */}
       <motion.svg
         className="absolute inset-0 w-full h-full z-0 pointer-events-none"
         viewBox="0 0 800 600"
         preserveAspectRatio="xMidYMid slice"
       >
-        {Array.from({ length: 25 }).map((_, i) => {
-          const cx = Math.random() * 800;
-          const cy = Math.random() * 600;
-          const r = 1 + Math.random() * 3;
-          const dur = 12 + Math.random() * 15;
-          return (
-            <motion.circle
-              key={i}
-              cx={cx}
-              cy={cy}
-              r={r}
-              fill="url(#grad2)"
-              animate={{
-                cx: [cx, cx + 40, cx - 40, cx],
-                cy: [cy, cy + 40, cy - 40, cy],
-              }}
-              transition={{
-                duration: dur,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          );
-        })}
+        {circles.map((c, i) => (
+          <motion.circle
+            key={i}
+            cx={c.cx}
+            cy={c.cy}
+            r={c.r}
+            fill="url(#grad2)"
+            animate={{
+              cx: [c.cx, c.cx + 40, c.cx - 40, c.cx],
+              cy: [c.cy, c.cy + 40, c.cy - 40, c.cy],
+            }}
+            transition={{
+              duration: c.dur,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
         <defs>
           <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
@@ -80,80 +88,68 @@ export default function Contact() {
         </defs>
       </motion.svg>
 
-   {/* العنوان */}
-<div className="relative flex flex-col items-center mb-20">
+      {/* العنوان */}
+      <div className="relative flex flex-col items-center mb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { staggerChildren: 0.15, duration: 1, ease: "easeOut" },
+            },
+          }}
+          className="flex flex-col items-center relative z-10"
+        >
+          <motion.h2
+            variants={{
+              hidden: { opacity: 0, y: -40 },
+              visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
+            }}
+            className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
+          >
+            Contact <span className="text-cyan-400">M<span className="text-purple-400">e</span></span>
+          </motion.h2>
 
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-    variants={{
-      hidden: { opacity: 0, y: 40 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          staggerChildren: 0.15,
-          duration: 1,
-          ease: "easeOut",
-        },
-      },
-    }}
-    className="flex flex-col items-center relative z-10"
-  >
-    <motion.h2
-      variants={{
-        hidden: { opacity: 0, y: -40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
-      }}
-      className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
-    >
-      Contact <span className="text-cyan-400">M<span className="text-purple-400">e</span></span>
-    </motion.h2>
+          {/* الخيوط المضيئة */}
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 500 200"
+            className="absolute top-1/2 -translate-y-1/2 w-[170%] h-56 pointer-events-none"
+          >
+            <motion.path
+              d="M 50 100 C 120 20, 380 20, 450 100 C 380 180, 120 180, 50 100 Z"
+              stroke="url(#purpleGlow)"
+              strokeWidth="3"
+              fill="transparent"
+              animate={{ pathLength: [0.7, 1, 0.7], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M 80 100 C 160 40, 340 40, 420 100 C 340 160, 160 160, 80 100 Z"
+              stroke="url(#blueGlow)"
+              strokeWidth="3"
+              fill="transparent"
+              animate={{ pathLength: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
+                <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
+              </linearGradient>
+              <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
+                <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+          </motion.svg>
+        </motion.div>
+      </div>
 
-    {/* الخيوط المضيئة */}
-    <motion.svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 500 200"
-      className="absolute top-1/2 -translate-y-1/2 w-[170%] h-56 pointer-events-none"
-    >
-      <motion.path
-        d="M 50 100 C 120 20, 380 20, 450 100 C 380 180, 120 180, 50 100 Z"
-        stroke="url(#purpleGlow)"
-        strokeWidth="3"
-        fill="transparent"
-        animate={{
-          pathLength: [0.7, 1, 0.7],
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <motion.path
-        d="M 80 100 C 160 40, 340 40, 420 100 C 340 160, 160 160, 80 100 Z"
-        stroke="url(#blueGlow)"
-        strokeWidth="3"
-        fill="transparent"
-        animate={{
-          pathLength: [0.6, 1, 0.6],
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <defs>
-        <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
-          <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
-        </linearGradient>
-        <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
-          <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
-        </linearGradient>
-      </defs>
-    </motion.svg>
-  </motion.div>
-</div>
       {/* الفورم */}
       <motion.form
         ref={form}
@@ -172,7 +168,6 @@ export default function Contact() {
           className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
                      text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
         />
-
         <input
           type="email"
           name="email"
@@ -181,7 +176,6 @@ export default function Contact() {
           className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
                      text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
         />
-
         <textarea
           name="message"
           placeholder="Your Message"
@@ -190,30 +184,25 @@ export default function Contact() {
           className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
                      text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 resize-none"
         />
-<motion.button
-  type="submit"
-  disabled={loading}
-  className={`relative mt-4 py-3 px-6 rounded-lg font-semibold text-white 
+        <motion.button
+          type="submit"
+          disabled={loading}
+          className={`relative mt-4 py-3 px-6 rounded-lg font-semibold text-white 
               border border-violet-500/50 bg-black/20 backdrop-blur-sm 
               shadow-[0_0_20px_rgba(139,92,246,0.6)] 
               transition-all duration-500 w-full
               ${loading ? "cursor-not-allowed opacity-60" : ""}`}
-  whileHover={!loading ? { scale: 1.05 } : {}}
-  whileTap={!loading ? { scale: 0.95 } : {}}
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
->
-
-
-  {/* النص */}
-  <span className="relative z-10">
-    {loading ? "Sending..." : "Send Message"}
-  </span>
-</motion.button>
+          whileHover={!loading ? { scale: 1.05 } : {}}
+          whileTap={!loading ? { scale: 0.95 } : {}}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <span className="relative z-10">{loading ? "Sending..." : "Send Message"}</span>
+        </motion.button>
       </motion.form>
 
-      {/* Social icons بنفس ستايل Home */}
+      {/* Social icons */}
       <motion.div
         className="relative flex items-center justify-center gap-6 
                    p-3 rounded-2xl border border-cyan-400/40
@@ -229,7 +218,7 @@ export default function Contact() {
         />
         <div className="relative z-10 flex items-center gap-6">
           <a
-        href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-cyan-400 
                        hover:scale-125 transition-transform duration-300"
@@ -237,7 +226,7 @@ export default function Contact() {
             <FaLinkedin />
           </a>
           <a
-        href="https://wa.me/201204470794"
+            href="https://wa.me/201204470794"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-green-400 
                        hover:scale-125 transition-transform duration-300"
@@ -245,7 +234,7 @@ export default function Contact() {
             <FaWhatsapp />
           </a>
           <a
-        href="https://www.facebook.com/share/16sNdwRsQt/"
+            href="https://www.facebook.com/share/16sNdwRsQt/"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-blue-500 
                        hover:scale-125 transition-transform duration-300"
@@ -285,7 +274,7 @@ export default function Contact() {
       )}
 
       {error && (
-        <div className="fixed inset-0 f`lex items-center justify-center bg-black/70 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
           <motion.div
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
