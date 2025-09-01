@@ -30,13 +30,13 @@ export default function Contact() {
 
     if (!form.current) return;
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      )
+   emailjs.sendForm(
+  "service_tbxzka8",   // Service ID
+  "template_53t0t05",  // Template ID
+  form.current,
+  "hQmjB4HHyBLjT9a2V"  // Public Key
+)
+
       .then(
         () => {
           setLoading(false);
