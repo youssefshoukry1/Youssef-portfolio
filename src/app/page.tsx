@@ -134,6 +134,7 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
       >
+        {/** 2 lines animation*/}
         <motion.div
           className="absolute w-full h-full rounded-full border-4 border-cyan-400"
           initial={{ opacity: 0, scale: 0.5 }}

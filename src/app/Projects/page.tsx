@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -32,9 +32,9 @@ export default function Page() {
   effect="coverflow"
   grabCursor
   speed={700}
-  centeredSlides={true} // هنا نخليها true
+  centeredSlides={true} 
   initialSlide={1}
-  slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
+  slidesPerView={4} 
   coverflowEffect={{
     rotate: 35,
     stretch: -30,
@@ -85,9 +85,9 @@ export default function Page() {
   effect="coverflow"
   grabCursor
   speed={700}
-  centeredSlides={true} // هنا نخليها true
+  centeredSlides={true} 
   initialSlide={1}
-  slidesPerView={4} // نحدد عدد slides ثابت على الكمبيوتر
+  slidesPerView={4} 
   coverflowEffect={{
     rotate: 45,
     stretch: -20,
@@ -128,7 +128,30 @@ export default function Page() {
     );
   };
 
+  // New: generate bubbles and rectangles only on client
+  const [bubbles, setBubbles] = useState<any[]>([]);
+  const [rects, setRects] = useState<any[]>([]);
 
+  useEffect(() => {
+    setBubbles(
+      Array.from({ length: 30 }).map(() => ({
+        cx: Math.random() * 800,
+        cy: Math.random() * 600,
+        r: 1 + Math.random() * 3,
+        dur: 10 + Math.random() * 20,
+      }))
+    );
+
+    setRects(
+      Array.from({ length: 20 }).map(() => ({
+        x: Math.random() * 750,
+        y: Math.random() * 550,
+        w: 15 + Math.random() * 40,
+        h: 10 + Math.random() * 25,
+        dur: 12 + Math.random() * 10,
+      }))
+    );
+  }, []);
 
   return (
 <section
@@ -141,63 +164,48 @@ export default function Page() {
     viewBox="0 0 800 600"
     preserveAspectRatio="xMidYMid slice"
   >
-    {/* Bubbles */}
-    {Array.from({ length: 30 }).map((_, i) => {
-      const cx = Math.random() * 800;
-      const cy = Math.random() * 600;
-      const r = 1 + Math.random() * 3;
-      const dur = 10 + Math.random() * 20;
-      return (
-        <motion.circle
-          key={i}
-          cx={cx}
-          cy={cy}
-          r={r}
-          fill="url(#grad)"
-          animate={{
-            cy: [cy, cy - 50, cy + 50, cy],
-            scale: [0.8, 1, 1.2, 1],
-          }}
-          transition={{
-            duration: dur,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      );
-    })}
+    {bubbles.map((b, i) => (
+      <motion.circle
+        key={i}
+        cx={b.cx}
+        cy={b.cy}
+        r={b.r}
+        fill="url(#grad)"
+        animate={{
+          cy: [b.cy, b.cy - 50, b.cy + 50, b.cy],
+          scale: [0.8, 1, 1.2, 1],
+        }}
+        transition={{
+          duration: b.dur,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    ))}
 
-    {/* Geometric rectangles (tech vibe) */}
-    {Array.from({ length: 20 }).map((_, i) => {
-      const x = Math.random() * 750;
-      const y = Math.random() * 550;
-      const w = 15 + Math.random() * 40;
-      const h = 10 + Math.random() * 25;
-      const dur = 12 + Math.random() * 10;
-      return (
-        <motion.rect
-          key={i}
-          x={x}
-          y={y}
-          width={w}
-          height={h}
-          rx={3}
-          ry={3}
-          fill="url(#grad)"
-          opacity={0.1}
-          animate={{
-            x: [x, x + 30, x - 30, x],
-            y: [y, y + 20, y - 20, y],
-            rotate: [0, 15, -15, 0],
-          }}
-          transition={{
-            duration: dur,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      );
-    })}
+    {rects.map((r, i) => (
+      <motion.rect
+        key={i}
+        x={r.x}
+        y={r.y}
+        width={r.w}
+        height={r.h}
+        rx={3}
+        ry={3}
+        fill="url(#grad)"
+        opacity={0.1}
+        animate={{
+          x: [r.x, r.x + 30, r.x - 30, r.x],
+          y: [r.y, r.y + 20, r.y - 20, r.y],
+          rotate: [0, 15, -15, 0],
+        }}
+        transition={{
+          duration: r.dur,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    ))}
 
     <defs>
       <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -226,10 +234,9 @@ export default function Page() {
     viewport={{ once: true }}
     className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-36 lg:mb-0 -mt-10 -mb-10  z-10"
   >
-    <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl lg:text-6xl">f</span>o<span className="text-cyan-400">i</span>ls
+    <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl lg:text-6xl">f</span>o<span className="text-cyan-400">l</span>ios
   </motion.h1>
   <PortfoliosSlider items={portfolios} />
 </section>
-
   );
 }

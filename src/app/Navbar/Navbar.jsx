@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
-import { button } from "framer-motion/client";
 
 export default function Navbar() {
   const navItem = [
