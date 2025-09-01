@@ -13,16 +13,16 @@ import "swiper/css/pagination";
 
 export default function Page() {
   const projects = [
-    { img: "/ecomeerce.webp", href: "http://ecommerce-cwzh.vercel.app" },
     { img: "/food.webp", href: "https://final-food-app-xi.vercel.app/" },
+    { img: "/ecomeerce.webp", href: "http://ecommerce-cwzh.vercel.app" },
     { img: "/to-do.webp", href: "https://to-do-list-0.vercel.app/" },
-    { img: "/weather.webp", href: "https://weather-flft.vercel.app/" },
     { img: "/x&o.webp", href: "https://x-o-rose.vercel.app/" },
+    { img: "/weather.webp", href: "https://weather-flft.vercel.app/" },
   ];
 
   const portfolios = [
-    { img: "/marcen.webp", href: "https://portfolio-marcelino.vercel.app/" },
     { img: "/joyce.webp", href: "https://joyce-portfolio-five.vercel.app/" },
+    { img: "/marcen.webp", href: "https://portfolio-marcelino.vercel.app/" },
     { img: "/emy.webp", href: "https://protofilo-sable.vercel.app/" },
     { img: "/shery.webp", href: "https://shery-portfolio-eta.vercel.app/" },
   ];
