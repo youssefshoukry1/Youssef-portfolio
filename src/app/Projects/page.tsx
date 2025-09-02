@@ -62,7 +62,7 @@ export default function Page() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="relative w-[250px] h-[190px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] transition-all duration-500 transform-gpu"
+                className="relative w-[250px] h-[170px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] transition-all duration-500 transform-gpu"
               >
 <Image
   src={card.img}
@@ -122,7 +122,7 @@ export default function Page() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="relative w-[250px] h-[190px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40  shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
+                  className="relative w-[250px] h-[170px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40  shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
                 >
 <Image
   src={card.img}
