@@ -23,7 +23,7 @@ export default function Page() {
 
   const portfolios = [
     { img: "/joyce.webp", href: "https://joyce-portfolio-five.vercel.app/" },
-    { img: "/marco.webp", href: "https://portfolio-marcelino.vercel.app/" },
+    { img: "/marco.webp", href: "https://marco-portfolio-ten.vercel.app/" },
     { img: "/marcen.webp", href: "https://portfolio-marcelino.vercel.app/" },
     { img: "/emy.webp", href: "https://protofilo-sable.vercel.app/" },
     { img: "/shery.webp", href: "https://shery-portfolio-eta.vercel.app/" },
