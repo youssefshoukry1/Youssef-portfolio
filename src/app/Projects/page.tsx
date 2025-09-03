@@ -57,7 +57,7 @@ export default function Page() {
       {items.map((card, index) => (
         <SwiperSlide key={index} className=" w-[290px]">
           <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
-            <div className="lg:bg-white/10 lg:backdrop-blur-sm lg:rounded-2xl lg:p-4  ">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4  ">
               <motion.div
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
