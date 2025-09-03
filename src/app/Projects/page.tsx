@@ -15,6 +15,7 @@ export default function Page() {
   const projects = [
     { img: "/food.webp", href: "https://final-food-app-xi.vercel.app/" },
     { img: "/ecomeerce.webp", href: "http://ecommerce-cwzh.vercel.app" },
+    { img: "/real-estate.webp", href: "https://real-estate-theta-blond.vercel.app/" },
     { img: "/to-do.webp", href: "https://to-do-list-0.vercel.app/" },
     { img: "/x&o.webp", href: "https://x-o-rose.vercel.app/" },
     { img: "/weather.webp", href: "https://weather-flft.vercel.app/" },
@@ -54,21 +55,25 @@ export default function Page() {
   }}
 >
       {items.map((card, index) => (
-        <SwiperSlide key={index} className="w-[260px]">
+        <SwiperSlide key={index} className=" w-[290px]">
           <a href={card.href} target="_blank" rel="noopener noreferrer" className="block">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4">
+            <div className="lg:bg-white/10 lg:backdrop-blur-sm lg:rounded-2xl lg:p-4  ">
               <motion.div
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="relative w-[250px] h-[170px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] transition-all duration-500 transform-gpu"
+                className="relative w-[220px] h-[140px] sm:w-[260px] sm:h-[230px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-cyan-400/40 shadow-[0_0_35px_rgba(56,189,248,0.5)] hover:shadow-[0_0_45px_rgba(56,189,248,0.7)] transition-all duration-500 transform-gpu"
               >
 <Image
   src={card.img}
   alt={`Project ${index}`}
   width={320}   // العرض المطلوب
   height={250}  // الطول المطلوب
+   sizes="(max-width: 640px) 220px,
+          (max-width: 768px) 260px,
+          (max-width: 1024px) 350px,
+          480px"
   className="object-cover w-full h-full rounded-xl"
 />
               </motion.div>
@@ -122,13 +127,17 @@ export default function Page() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="relative w-[250px] h-[170px] sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40  shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
+                  className="relative w-[220px] h-[140px] sm:w-[260px] sm:h-[230px] md:w-[320px] md:h-[250px] mx-auto rounded-xl overflow-hidden border border-violet-400/40  shadow-[0_0_35px_rgba(139,92,246,0.5)] hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] transition-all duration-500 transform-gpu"
                 >
 <Image
   src={card.img}
   alt={`Portfolio ${index}`}
   width={320}   // العرض المطلوب
   height={250}  // الطول المطلوب
+  sizes="(max-width: 640px) 220px,
+          (max-width: 768px) 260px,
+          (max-width: 1024px) 350px,
+          480px"
   className="object-cover w-full h-full rounded-xl"
 />
                 </motion.div>
