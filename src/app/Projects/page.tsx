@@ -196,7 +196,7 @@ export default function Page() {
         }}
       />
     ))}
-
+    
     {rects.map((r, i) => (
       <motion.rect
         key={i}
