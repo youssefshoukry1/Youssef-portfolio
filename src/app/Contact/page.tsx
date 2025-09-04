@@ -11,7 +11,9 @@ export default function Contact() {
   const [error, setError] = useState(false);
 
   // 💡 لتجنب مشكلة hydration
-  const [circles, setCircles] = useState<{ cx: number; cy: number; r: number; dur: number }[]>([]);
+  const [circles, setCircles] = useState<
+    { cx: number; cy: number; r: number; dur: number }[]
+  >([]);
 
   useEffect(() => {
     setCircles(
@@ -30,12 +32,13 @@ export default function Contact() {
 
     if (!form.current) return;
 
-   emailjs.sendForm(
-  "service_tbxzka8",   // Service ID
-  "template_53t0t05",  // Template ID
-  form.current,
-  "hQmjB4HHyBLjT9a2V"  // Public Key
-)
+    emailjs
+      .sendForm(
+        "service_tbxzka8", // Service ID
+        "template_53t0t05", // Template ID
+        form.current,
+        "hQmjB4HHyBLjT9a2V" // Public Key
+      )
 
       .then(
         () => {
@@ -99,7 +102,11 @@ export default function Contact() {
             visible: {
               opacity: 1,
               y: 0,
-              transition: { staggerChildren: 0.15, duration: 1, ease: "easeOut" },
+              transition: {
+                staggerChildren: 0.15,
+                duration: 1,
+                ease: "easeOut",
+              },
             },
           }}
           className="flex flex-col items-center relative z-10"
@@ -107,11 +114,18 @@ export default function Contact() {
           <motion.h2
             variants={{
               hidden: { opacity: 0, y: -40 },
-              visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 1.2, ease: "easeOut" },
+              },
             }}
             className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl relative z-10"
           >
-            Contact <span className="text-cyan-400">M<span className="text-purple-400">e</span></span>
+            Contact{" "}
+            <span className="text-cyan-400">
+              M<span className="text-purple-400">e</span>
+            </span>
           </motion.h2>
 
           {/* الخيوط المضيئة */}
@@ -139,11 +153,19 @@ export default function Contact() {
             <defs>
               <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="rgb(168,85,247)" stopOpacity="1" />
-                <stop offset="100%" stopColor="rgb(192,132,252)" stopOpacity="0.9" />
+                <stop
+                  offset="100%"
+                  stopColor="rgb(192,132,252)"
+                  stopOpacity="0.9"
+                />
               </linearGradient>
               <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="rgb(56,189,248)" stopOpacity="1" />
-                <stop offset="100%" stopColor="rgb(34,211,238)" stopOpacity="0.9" />
+                <stop
+                  offset="100%"
+                  stopColor="rgb(34,211,238)"
+                  stopOpacity="0.9"
+                />
               </linearGradient>
             </defs>
           </motion.svg>
@@ -155,34 +177,37 @@ export default function Contact() {
         ref={form}
         onSubmit={sendEmail}
         className="flex flex-col gap-4 bg-white/5 backdrop-blur-md p-6 rounded-2xl 
-                   border border-cyan-400/30 shadow-xl w-full max-w-lg relative z-10"
+                  border border-cyan-400/30 shadow-xl w-full max-w-lg relative z-10"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <input
+        <motion.input
+          whileFocus={{ scale: 1.02 , borderRadius: "20px",boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)"}}
           type="text"
           name="name"
           placeholder="Your Name"
           required
-          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
-                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-cyan-400/50 
+          text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
         />
-        <input
+        <motion.input
+          whileFocus={{ scale: 1.02 ,borderRadius: "20px",boxShadow: "0 0 10px rgba(168, 85, 247, 0.7)" }}
           type="email"
           name="email"
           placeholder="Your Email"
           required
-          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
-                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-purple-400/50 
+                    text-white placeholder-gray-400 focus:outline-none  focus:border-purple-500"
         />
-        <textarea
+        <motion.textarea
+            whileFocus={{ scale: 1.02 ,borderRadius: "20px",boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)"}}
           name="message"
           placeholder="Your Message"
           rows={5}
           required
-          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-gray-600 
-                     text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 resize-none"
+          className="w-full px-4 py-3 rounded-lg bg-black/30 border border-cyan-400/50 
+          text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 resize-none"
         />
         <motion.button
           type="submit"
@@ -198,15 +223,17 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="relative z-10">{loading ? "Sending..." : "Send Message"}</span>
+          <span className="relative z-10">
+            {loading ? "Sending..." : "Send Message"}
+          </span>
         </motion.button>
       </motion.form>
 
       {/* Social icons */}
       <motion.div
         className="relative flex items-center justify-center gap-6 
-                   p-3 rounded-2xl border border-cyan-400/40
-                   bg-white/5 backdrop-blur-md shadow-lg mt-10 z-10"
+                    p-3 rounded-2xl border border-cyan-400/40
+                  bg-white/5 backdrop-blur-md shadow-lg mt-10 z-10"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -221,7 +248,7 @@ export default function Contact() {
             href="https://www.linkedin.com/in/youssef-shoukry-4568a3348?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-cyan-400 
-                       hover:scale-125 transition-transform duration-300"
+                      hover:scale-125 transition-transform duration-300"
           >
             <FaLinkedin />
           </a>
@@ -229,7 +256,7 @@ export default function Contact() {
             href="https://wa.me/201204470794"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-green-400 
-                       hover:scale-125 transition-transform duration-300"
+                        hover:scale-125 transition-transform duration-300"
           >
             <FaWhatsapp />
           </a>
@@ -237,7 +264,7 @@ export default function Contact() {
             href="https://www.facebook.com/share/16sNdwRsQt/"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-blue-500 
-                       hover:scale-125 transition-transform duration-300"
+                      hover:scale-125 transition-transform duration-300"
           >
             <FaFacebook />
           </a>
@@ -245,7 +272,7 @@ export default function Contact() {
             href="mailto:ofaashoukry@email.com"
             target="_blank"
             className="flex items-center justify-center w-10 h-10 text-2xl text-red-400 
-                       hover:scale-125 transition-transform duration-300"
+                      hover:scale-125 transition-transform duration-300"
           >
             <FaEnvelope />
           </a>
@@ -259,13 +286,13 @@ export default function Contact() {
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-cyan-400/30 
-                       shadow-xl text-center text-white w-80"
+                        shadow-xl text-center text-white w-80"
           >
             <h3 className="text-xl font-semibold mb-4">Message Sent ✅</h3>
             <button
               onClick={() => setDone(false)}
               className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
-                         rounded-lg font-semibold hover:opacity-90 transition"
+                          rounded-lg font-semibold hover:opacity-90 transition"
             >
               Close
             </button>
@@ -279,13 +306,15 @@ export default function Contact() {
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-cyan-400/30 
-                       shadow-xl text-center text-white w-80"
+                        shadow-xl text-center text-white w-80"
           >
-            <h3 className="text-xl font-semibold mb-4">Something went wrong ❌</h3>
+            <h3 className="text-xl font-semibold mb-4">
+              Something went wrong ❌
+            </h3>
             <button
               onClick={() => setError(false)}
               className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 
-                         rounded-lg font-semibold hover:opacity-90 transition"
+                          rounded-lg font-semibold hover:opacity-90 transition"
             >
               Close
             </button>
