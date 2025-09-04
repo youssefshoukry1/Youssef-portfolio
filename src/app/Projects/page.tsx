@@ -69,6 +69,7 @@ export default function Page() {
 <Image
   src={card.img}
   alt={`Project ${index}`}
+  priority={index < 3 } 
   width={320}   // العرض المطلوب
   height={250}  // الطول المطلوب
    sizes="(max-width: 640px) 220px,
@@ -133,6 +134,7 @@ export default function Page() {
 <Image
   src={card.img}
   alt={`Portfolio ${index}`}
+  priority={index < 3 } 
   width={320}   // العرض المطلوب
   height={250}  // الطول المطلوب
   sizes="(max-width: 640px) 220px,

@@ -145,6 +145,7 @@ export default function Home() {
             src="/Ofaa7.webp"
             alt="My Photo"
             fill
+            priority
             sizes="(max-width: 768px) 160px, (max-width: 1200px) 256px, 320px"
           />
         </motion.div>
