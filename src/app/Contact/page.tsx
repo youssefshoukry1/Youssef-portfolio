@@ -67,12 +67,13 @@ export default function Contact() {
       >
         {circles.map((c, i) => (
           <motion.circle
+          
             key={i}
             cx={c.cx}
             cy={c.cy}
             r={c.r}
             fill="url(#grad2)"
-            animate={{
+            whileInView={{
               cx: [c.cx, c.cx + 40, c.cx - 40, c.cx],
               cy: [c.cy, c.cy + 40, c.cy - 40, c.cy],
             }}
