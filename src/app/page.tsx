@@ -59,7 +59,7 @@ export default function Home() {
               cy={c.cy}
               r={c.r}
               fill="url(#grad)"
-              whileInView={{
+              animate={{
                 cx: [c.cx, c.cx + 50, c.cx - 50, c.cx],
                 cy: [c.cy, c.cy + 50, c.cy - 50, c.cy],
               }}

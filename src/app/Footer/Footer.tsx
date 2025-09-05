@@ -12,14 +12,14 @@ export default function Footer() {
       <motion.div
         className="absolute -z-0 rounded-full border-2 border-purple-500/30"
         initial={{ scale: 0.8, opacity: 0.5 }}
-        whileInView={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
+        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 5, repeat: Infinity }}
         style={{ width: "200px", height: "200px", top: "-50px", left: "-50px" }}
       />
       <motion.div
         className="absolute -z-0 rounded-full border-2 border-cyan-400/30"
         initial={{ scale: 1, opacity: 0.5 }}
-        whileHover={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+        animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 7, repeat: Infinity }}
         style={{ width: "250px", height: "250px", bottom: "-60px", right: "-60px" }}
       />

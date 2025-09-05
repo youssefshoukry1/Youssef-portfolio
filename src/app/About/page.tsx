@@ -80,7 +80,7 @@ export default function About() {
             cy={c.cy}
             r={c.r}
             fill="url(#grad)"
-            whileInView={{
+            animate={{
               cx: [c.cx, c.cx + 30, c.cx - 30, c.cx],
               cy: [c.cy, c.cy + 30, c.cy - 30, c.cy],
             }}

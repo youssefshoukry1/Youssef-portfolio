@@ -197,7 +197,7 @@ export default function Page() {
         cy={b.cy}
         r={b.r}
         fill="url(#grad)"
-        whileInView={{
+        animate={{
           cy: [b.cy, b.cy - 50, b.cy + 50, b.cy],
           scale: [0.8, 1, 1.2, 1],
         }}

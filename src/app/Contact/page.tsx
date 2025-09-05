@@ -73,7 +73,7 @@ export default function Contact() {
             cy={c.cy}
             r={c.r}
             fill="url(#grad2)"
-            whileInView={{
+            animate={{
               cx: [c.cx, c.cx + 40, c.cx - 40, c.cx],
               cy: [c.cy, c.cy + 40, c.cy - 40, c.cy],
             }}
