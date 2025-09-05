@@ -66,24 +66,26 @@ export default function Contact() {
         preserveAspectRatio="xMidYMid slice"
       >
         {circles.map((c, i) => (
-          <motion.circle
-          
-            key={i}
-            cx={c.cx}
-            cy={c.cy}
-            r={c.r}
-            fill="url(#grad2)"
-            animate={{
-              cx: [c.cx, c.cx + 40, c.cx - 40, c.cx],
-              cy: [c.cy, c.cy + 40, c.cy - 40, c.cy],
-            }}
-            transition={{
-              duration: c.dur,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+  <motion.circle
+    key={i}
+    cx={c.cx} // ثابت
+    cy={c.cy} // ثابت
+    r={c.r}
+    fill="url(#grad)"
+    animate={{
+      // نحركها بالترانسفورم بدل cx, cy
+      translateX: [0, 50, -50, 0],
+      translateY: [0, 50, -50, 0],
+    }}
+    transition={{
+        repeatType: "mirror",
+      duration: c.dur,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+))}
+
         <defs>
           <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
@@ -141,7 +143,7 @@ export default function Contact() {
               strokeWidth="3"
               fill="transparent"
               animate={{ pathLength: [0.7, 1, 0.7], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut",  repeatType: "mirror" }}
             />
             <motion.path
               d="M 80 100 C 160 40, 340 40, 420 100 C 340 160, 160 160, 80 100 Z"
@@ -149,7 +151,7 @@ export default function Contact() {
               strokeWidth="3"
               fill="transparent"
               animate={{ pathLength: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut",  repeatType: "mirror" }}
             />
             <defs>
               <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">

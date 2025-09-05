@@ -73,24 +73,27 @@ export default function About() {
         viewBox="0 0 800 600"
         preserveAspectRatio="xMidYMid slice"
       >
-        {circles.map((c, i) => (
-          <motion.circle
-            key={i}
-            cx={c.cx}
-            cy={c.cy}
-            r={c.r}
-            fill="url(#grad)"
-            animate={{
-              cx: [c.cx, c.cx + 30, c.cx - 30, c.cx],
-              cy: [c.cy, c.cy + 30, c.cy - 30, c.cy],
-            }}
-            transition={{
-              duration: c.dur,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+       {circles.map((c, i) => (
+  <motion.circle
+    key={i}
+    cx={c.cx} // ثابت
+    cy={c.cy} // ثابت
+    r={c.r}
+    fill="url(#grad)"
+    animate={{
+      // نحركها بالترانسفورم بدل cx, cy
+      translateX: [0, 50, -50, 0],
+      translateY: [0, 50, -50, 0],
+    }}
+    transition={{
+        repeatType: "mirror",
+      duration: c.dur,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+))}
+
 
         {lines.map((l, i) => (
           <motion.line

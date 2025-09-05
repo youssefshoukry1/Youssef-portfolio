@@ -190,48 +190,51 @@ export default function Page() {
     viewBox="0 0 800 600"
     preserveAspectRatio="xMidYMid slice"
   >
-    {bubbles.map((b, i) => (
-      <motion.circle
-        key={i}
-        cx={b.cx}
-        cy={b.cy}
-        r={b.r}
-        fill="url(#grad)"
-        animate={{
-          cy: [b.cy, b.cy - 50, b.cy + 50, b.cy],
-          scale: [0.8, 1, 1.2, 1],
-        }}
-        transition={{
-          duration: b.dur,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-    
-    {rects.map((r, i) => (
-      <motion.rect
-        key={i}
-        x={r.x}
-        y={r.y}
-        width={r.w}
-        height={r.h}
-        rx={3}
-        ry={3}
-        fill="url(#grad)"
-        opacity={0.1}
-        animate={{
-          x: [r.x, r.x + 30, r.x - 30, r.x],
-          y: [r.y, r.y + 20, r.y - 20, r.y],
-          rotate: [0, 15, -15, 0],
-        }}
-        transition={{
-          duration: r.dur,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
+{bubbles.map((b, i) => (
+  <motion.circle
+    key={i}
+    cx={b.cx} // ثابت
+    cy={b.cy} // ثابت
+    r={b.r}
+    fill="url(#grad)"
+    animate={{
+      translateY: [0, -50, 50, 0], // بدل cy
+      scale: [0.8, 1, 1.2, 1],
+    }}
+    transition={{
+        repeatType: "mirror",
+      duration: b.dur,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+))}
+
+{rects.map((r, i) => (
+  <motion.rect
+    key={i}
+    x={r.x} // ثابت
+    y={r.y} // ثابت
+    width={r.w}
+    height={r.h}
+    rx={3}
+    ry={3}
+    fill="url(#grad)"
+    opacity={0.1}
+    animate={{
+      translateX: [0, 30, -30, 0], // بدل x
+      translateY: [0, 20, -20, 0], // بدل y
+      rotate: [0, 15, -15, 0],
+    }}
+    transition={{
+        repeatType: "mirror",
+      duration: r.dur,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+))}
+
 
     <defs>
       <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">

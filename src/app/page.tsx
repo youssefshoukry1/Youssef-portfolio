@@ -52,24 +52,27 @@ export default function Home() {
           viewBox="0 0 800 600"
           preserveAspectRatio="xMidYMid slice"
         >
-          {circles.map((c, i) => (
-            <motion.circle
-              key={i}
-              cx={c.cx}
-              cy={c.cy}
-              r={c.r}
-              fill="url(#grad)"
-              animate={{
-                cx: [c.cx, c.cx + 50, c.cx - 50, c.cx],
-                cy: [c.cy, c.cy + 50, c.cy - 50, c.cy],
-              }}
-              transition={{
-                duration: c.dur,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
+{circles.map((c, i) => (
+  <motion.circle
+    key={i}
+    cx={c.cx} // ثابت
+    cy={c.cy} // ثابت
+    r={c.r}
+    fill="url(#grad)"
+    animate={{
+      // نحركها بالترانسفورم بدل cx, cy
+      translateX: [0, 50, -50, 0],
+      translateY: [0, 50, -50, 0],
+    }}
+    transition={{
+        repeatType: "mirror",
+      duration: c.dur,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+))}
+
 
           <defs>
             <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -132,13 +135,13 @@ export default function Home() {
             className="absolute w-full h-full rounded-full border-4 border-cyan-400"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.6, 0.3, 0.6], scale: [0.8, 1, 1.2, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut",  repeatType: "mirror" }}
           />
           <motion.div
             className="absolute w-[115%] h-[115%] rounded-full border-4 border-purple-500"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.5, 0.2, 0.5], scale: [0.8, 1, 1.3, 1] }}
-            transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+            transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut",  repeatType: "mirror" }}
           />
           <Image
             className="rounded-full object-cover shadow-[0_0_40px_rgba(59,130,246,0.6)]"
