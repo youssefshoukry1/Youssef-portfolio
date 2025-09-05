@@ -57,7 +57,7 @@ export default function Contact() {
     <section
       id="contact"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 
-                 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
+                  bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
     >
       {/* الخلفية المتحركة */}
       <motion.svg
@@ -96,24 +96,7 @@ export default function Contact() {
 
       {/* العنوان */}
       <div className="relative flex flex-col items-center mb-20">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                staggerChildren: 0.15,
-                duration: 1,
-                ease: "easeOut",
-              },
-            },
-          }}
-          className="flex flex-col items-center relative z-10"
-        >
+        <div className="flex flex-col items-center relative z-10">
           <motion.h2
             variants={{
               hidden: { opacity: 0, y: -40 },
@@ -172,7 +155,7 @@ export default function Contact() {
               </linearGradient>
             </defs>
           </motion.svg>
-        </motion.div>
+        </div>
       </div>
 
       {/* الفورم */}
