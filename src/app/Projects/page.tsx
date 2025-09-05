@@ -152,88 +152,96 @@ export default function Page() {
     );
   };
 
-  // New: generate bubbles and rectangles only on client
-  type Bubble = { cx: number; cy: number; r: number; dur: number };
-  type Rect = { x: number; y: number; w: number; h: number; dur: number };
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
-  const [rects, setRects] = useState<Rect[]>([]);
+// New: generate bubbles and rectangles only on client
+type Bubble = { cx: number; cy: number; r: number; dur: number; dir: number };
+type Rect = { x: number; y: number; w: number; h: number; dur: number; dir: number; rotate: boolean };
 
-  useEffect(() => {
-    setBubbles(
-      Array.from({ length: 30 }).map(() => ({
-        cx: Math.random() * 800,
-        cy: Math.random() * 600,
-        r: 1 + Math.random() * 3,
-        dur: 10 + Math.random() * 20,
-      }))
-    );
+const [bubbles, setBubbles] = useState<Bubble[]>([]);
+const [rects, setRects] = useState<Rect[]>([]);
 
-    setRects(
-      Array.from({ length: 20 }).map(() => ({
-        x: Math.random() * 750,
-        y: Math.random() * 550,
-        w: 15 + Math.random() * 40,
-        h: 10 + Math.random() * 25,
-        dur: 12 + Math.random() * 10,
-      }))
-    );
-  }, []);
+useEffect(() => {
+  setBubbles(
+    Array.from({ length: 20 }).map(() => ({
+      cx: Math.random() * 800,
+      cy: Math.random() * 600,
+      r: 1 + Math.random() * 3,
+      dur: 10 + Math.random() * 20,
+      dir: Math.random() > 0.5 ? 1 : -1, // عشوائي يمين/شمال
+    }))
+  );
 
-  return (
-<section
-  id="projects"
-  className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden"
->
-  {/* Floating bubbles */}
-  <motion.svg
-    className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-    viewBox="0 0 800 600"
-    preserveAspectRatio="xMidYMid slice"
+  setRects(
+    Array.from({ length: 20 }).map(() => ({
+      x: Math.random() * 750,
+      y: Math.random() * 550,
+      w: 15 + Math.random() * 40,
+      h: 10 + Math.random() * 25,
+      dur: 12 + Math.random() * 10,
+      dir: Math.random() > 0.5 ? 1 : -1, // عشوائي يمين/شمال
+      rotate: Math.random() > 0.5, // نصهم يلفوا ونصهم لأ
+    }))
+  );
+}, []);
+
+return (
+  <section
+    id="projects"
+    className="min-h-screen w-full flex flex-col items-center justify-center gap-20 px-6 py-16 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] relative overflow-hidden"
   >
-{bubbles.map((b, i) => (
-  <motion.circle
-    key={i}
-    cx={b.cx} // ثابت
-    cy={b.cy} // ثابت
-    r={b.r}
-    fill="url(#grad)"
-    animate={{
-      translateY: [0, -50, 50, 0], // بدل cy
-      scale: [0.8, 1, 1.2, 1],
-    }}
-    transition={{
-        repeatType: "mirror",
-      duration: b.dur,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-))}
+    {/* Floating bubbles */}
+    <motion.svg
+      className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+      viewBox="0 0 800 600"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      {bubbles.map((b, i) => (
+        <motion.circle
+          key={i}
+          cx={b.cx}
+          cy={b.cy}
+          r={b.r}
+          fill="url(#grad)"
+          animate={{
+            translateX: [0, b.dir * 20, b.dir * -20, 0], // حركة جانبية خفيفة
+            translateY: [0, -50, 50, 0],
+            scale: [0.8, 1, 1.2, 1],
+          }}
+          transition={{
+            repeatType: "mirror",
+            duration: b.dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
-{rects.map((r, i) => (
-  <motion.rect
-    key={i}
-    x={r.x} // ثابت
-    y={r.y} // ثابت
-    width={r.w}
-    height={r.h}
-    rx={3}
-    ry={3}
-    fill="url(#grad)"
-    opacity={0.1}
-    animate={{
-      translateX: [0, 30, -30, 0], // بدل x
-      translateY: [0, 20, -20, 0], // بدل y
-      rotate: [0, 15, -15, 0],
-    }}
-    transition={{
-        repeatType: "mirror",
-      duration: r.dur,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-))}
+      {rects.map((r, i) => (
+        <motion.rect
+          key={i}
+          x={r.x}
+          y={r.y}
+          width={r.w}
+          height={r.h}
+          rx={3}
+          ry={3}
+          fill="url(#grad)"
+          opacity={0.1}
+          animate={{
+            translateX: [0, r.dir * 30, r.dir * -30, 0],
+            translateY: [0, r.dir * 20, r.dir * -20, 0],
+            rotate: r.rotate ? [0, 15, -15, 0] : 0,
+          }}
+          transition={{
+            repeatType: "mirror",
+            duration: r.dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+
+
 
 
     <defs>
