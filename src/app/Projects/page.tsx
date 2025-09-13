@@ -253,26 +253,18 @@ return (
   </motion.svg>
 
   {/* Projects title and sliders */}
-  <motion.h1
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    viewport={{ once: true }}
+  <h1
     className="text-4xl sm:text-5xl font-extraboldt bg-clip-text text-white drop-shadow-lg -mb-10 z-10"
   >
     <span className="text-indigo-400">P  </span>r <span className="text-pink-400">o </span> j<span className="text-teal-400"> e</span> c <span className="text-cyan-400">t</span> s
-  </motion.h1>
+  </h1>
   <ProjectsSlider items={projects} />
 
-  <motion.h1
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    viewport={{ once: true }}
+  <h1
     className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg lg:mt-36 lg:mb-0 -mt-10 -mb-10  z-10"
   >
     <span className="text-indigo-400">P</span ><span className="text-emerald-400">o</span><span className="text-pink-400 ">R</span>t<span className="text-teal-400 text-5xl lg:text-6xl">f</span>o<span className="text-cyan-400">l</span>ios
-  </motion.h1>
+  </h1>
   <PortfoliosSlider items={portfolios} />
 </section>
   );
