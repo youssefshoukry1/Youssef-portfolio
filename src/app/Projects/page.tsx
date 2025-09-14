@@ -154,10 +154,8 @@ export default function Page() {
 
 // New: generate bubbles and rectangles only on client
 type Bubble = { cx: number; cy: number; r: number; dur: number; dir: number };
-type Rect = { x: number; y: number; w: number; h: number; dur: number; dir: number; rotate: boolean };
 
 const [bubbles, setBubbles] = useState<Bubble[]>([]);
-const [rects, setRects] = useState<Rect[]>([]);
 
 useEffect(() => {
   setBubbles(
@@ -167,18 +165,6 @@ useEffect(() => {
       r: 1 + Math.random() * 3,
       dur: 10 + Math.random() * 20,
       dir: Math.random() > 0.5 ? 1 : -1, // عشوائي يمين/شمال
-    }))
-  );
-
-  setRects(
-    Array.from({ length: 20 }).map(() => ({
-      x: Math.random() * 750,
-      y: Math.random() * 550,
-      w: 15 + Math.random() * 40,
-      h: 10 + Math.random() * 25,
-      dur: 12 + Math.random() * 10,
-      dir: Math.random() > 0.5 ? 1 : -1, // عشوائي يمين/شمال
-      rotate: Math.random() > 0.5, // نصهم يلفوا ونصهم لأ
     }))
   );
 }, []);
@@ -215,30 +201,7 @@ return (
         />
       ))}
 
-      {rects.map((r, i) => (
-        <motion.rect
-          key={i}
-          x={r.x}
-          y={r.y}
-          width={r.w}
-          height={r.h}
-          rx={3}
-          ry={3}
-          fill="url(#grad)"
-          opacity={0.1}
-          animate={{
-            translateX: [0, r.dir * 30, r.dir * -30, 0],
-            translateY: [0, r.dir * 20, r.dir * -20, 0],
-            rotate: r.rotate ? [0, 15, -15, 0] : 0,
-          }}
-          transition={{
-            repeatType: "mirror",
-            duration: r.dur,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+
 
 
 
