@@ -7,24 +7,25 @@ body{
 }
 /* 🎯 Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 10px; /* عرض السكرول بار */
+  width: 6px; /* عرض السكرول بار */
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0f1f; /* الخلفية الداكنة للـ track */
+  background: #0a0f1f; /* خلفية داكنة جدا */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a855f7, #3b82f6); /* الألوان المتدرجة */
-  border-radius: 8px; /* زوايا ناعمة */
+  background: linear-gradient(180deg, #4c1d95, #1e3a8a); /* بنفسجي غامق + أزرق غامق */
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9333ea, #2563eb); /* عند الـ hover */
+  background: linear-gradient(180deg, #6d28d9, #2563eb); /* درجات أوضح عند الـ hover */
 }
 
 /* 🖥️ لـ Firefox */
 * {
-  scrollbar-width: thin; /* رفيع */
-  scrollbar-color: #3b82f6 #0a0f1f; /* اللون الأساسي + خلفية */
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb #0a0f1f; /* أزرق غامق مع الخلفية الداكنة */
 }
+
