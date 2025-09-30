@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Youssef-Shoukry",
   description: "Portfoilo",
-   icons: {
+  icons: {
     icon: "/Ofaa7.webp", // هيظهر بدل أي favicon افتراضي
   },
 };
@@ -29,19 +29,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    crossOrigin="anonymous"
-  />
-</head>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

@@ -7,25 +7,28 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] text-white py-10 overflow-hidden">
-      
       {/* أشكال دائرية مضيئة متناسقة مع Contact */}
       <motion.div
         className="absolute -z-0 rounded-full border-2 border-purple-500/30"
         initial={{ scale: 0.8, opacity: 0.5 }}
         animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 5, repeat: Infinity ,  repeatType: "mirror"}}
+        transition={{ duration: 5, repeat: Infinity, repeatType: "mirror" }}
         style={{ width: "200px", height: "200px", top: "-50px", left: "-50px" }}
       />
       <motion.div
         className="absolute -z-0 rounded-full border-2 border-cyan-400/30"
         initial={{ scale: 1, opacity: 0.5 }}
         animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 7, repeat: Infinity,  repeatType: "mirror" }}
-        style={{ width: "250px", height: "250px", bottom: "-60px", right: "-60px" }}
+        transition={{ duration: 7, repeat: Infinity, repeatType: "mirror" }}
+        style={{
+          width: "250px",
+          height: "250px",
+          bottom: "-60px",
+          right: "-60px",
+        }}
       />
 
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-        
         {/* نص الفوتر */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}

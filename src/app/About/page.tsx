@@ -65,7 +65,7 @@ export default function About() {
     <section
       id="About"
       className="relative flex flex-col lg:flex-row items-center justify-center h-screen w-full gap-10 px-6 sm:px-12
-                 bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
+                bg-gradient-to-br from-[#0a0f1f] via-[#111827] to-[#1e293b] overflow-hidden"
     >
       {/* Geometric animated background with lines */}
       <motion.svg
@@ -73,27 +73,26 @@ export default function About() {
         viewBox="0 0 800 600"
         preserveAspectRatio="xMidYMid slice"
       >
-       {circles.map((c, i) => (
-  <motion.circle
-    key={i}
-    cx={c.cx} // ثابت
-    cy={c.cy} // ثابت
-    r={c.r}
-    fill="url(#grad)"
-    animate={{
-      // نحركها بالترانسفورم بدل cx, cy
-      translateX: [0, 50, -50, 0],
-      translateY: [0, 50, -50, 0],
-    }}
-    transition={{
-        repeatType: "mirror",
-      duration: c.dur,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-))}
-
+        {circles.map((c, i) => (
+          <motion.circle
+            key={i}
+            cx={c.cx} // ثابت
+            cy={c.cy} // ثابت
+            r={c.r}
+            fill="url(#grad)"
+            animate={{
+              // نحركها بالترانسفورم بدل cx, cy
+              translateX: [0, 50, -50, 0],
+              translateY: [0, 50, -50, 0],
+            }}
+            transition={{
+              repeatType: "mirror",
+              duration: c.dur,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
 
         {lines.map((l, i) => (
           <motion.line

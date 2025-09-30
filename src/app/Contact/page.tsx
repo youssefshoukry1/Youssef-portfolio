@@ -66,25 +66,25 @@ export default function Contact() {
         preserveAspectRatio="xMidYMid slice"
       >
         {circles.map((c, i) => (
-  <motion.circle
-    key={i}
-    cx={c.cx} // ثابت
-    cy={c.cy} // ثابت
-    r={c.r}
-    fill="url(#grad)"
-    animate={{
-      // نحركها بالترانسفورم بدل cx, cy
-      translateX: [0, 50, -50, 0],
-      translateY: [0, 50, -50, 0],
-    }}
-    transition={{
-        repeatType: "mirror",
-      duration: c.dur,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-))}
+          <motion.circle
+            key={i}
+            cx={c.cx} // ثابت
+            cy={c.cy} // ثابت
+            r={c.r}
+            fill="url(#grad)"
+            animate={{
+              // نحركها بالترانسفورم بدل cx, cy
+              translateX: [0, 50, -50, 0],
+              translateY: [0, 50, -50, 0],
+            }}
+            transition={{
+              repeatType: "mirror",
+              duration: c.dur,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
 
         <defs>
           <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -126,7 +126,12 @@ export default function Contact() {
               strokeWidth="3"
               fill="transparent"
               animate={{ pathLength: [0.7, 1, 0.7], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut",  repeatType: "mirror" }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                repeatType: "mirror",
+              }}
             />
             <motion.path
               d="M 80 100 C 160 40, 340 40, 420 100 C 340 160, 160 160, 80 100 Z"
@@ -134,7 +139,12 @@ export default function Contact() {
               strokeWidth="3"
               fill="transparent"
               animate={{ pathLength: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut",  repeatType: "mirror" }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                repeatType: "mirror",
+              }}
             />
             <defs>
               <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -169,7 +179,11 @@ export default function Contact() {
         transition={{ duration: 1 }}
       >
         <motion.input
-          whileFocus={{ scale: 1.02 , borderRadius: "20px",boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)"}}
+          whileFocus={{
+            scale: 1.02,
+            borderRadius: "20px",
+            boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)",
+          }}
           type="text"
           name="name"
           placeholder="Your Name"
@@ -178,7 +192,11 @@ export default function Contact() {
           text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
         />
         <motion.input
-          whileFocus={{ scale: 1.02 ,borderRadius: "20px",boxShadow: "0 0 10px rgba(168, 85, 247, 0.7)" }}
+          whileFocus={{
+            scale: 1.02,
+            borderRadius: "20px",
+            boxShadow: "0 0 10px rgba(168, 85, 247, 0.7)",
+          }}
           type="email"
           name="email"
           placeholder="Your Email"
@@ -187,7 +205,11 @@ export default function Contact() {
                     text-white placeholder-gray-400 focus:outline-none  focus:border-purple-500"
         />
         <motion.textarea
-            whileFocus={{ scale: 1.02 ,borderRadius: "20px",boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)"}}
+          whileFocus={{
+            scale: 1.02,
+            borderRadius: "20px",
+            boxShadow: "0 0 10px rgba(0, 255, 255, 0.7)",
+          }}
           name="message"
           placeholder="Your Message"
           rows={5}
