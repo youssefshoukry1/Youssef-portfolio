@@ -70,6 +70,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="block"
           >
+            hello
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4  ">
               <motion.div
                 initial={{ opacity: 0, scale: 0.85 }}
