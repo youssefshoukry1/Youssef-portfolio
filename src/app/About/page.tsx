@@ -140,6 +140,7 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           About <span className="text-cyan-400">M</span>
           <span className="text-purple-400">e</span>
@@ -150,6 +151,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
+          viewport={{ once: true }}
         >
           I mastered Front-End development in 9 months through YouTube and
           self-learning. I’m passionate about technology, a fast learner, and
@@ -166,6 +168,7 @@ export default function About() {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
               >
                 <Icon className={item.color} />
               </motion.div>

@@ -177,6 +177,7 @@ export default function Contact() {
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
+        viewport={{ once: true }}
       >
         <motion.input
           whileFocus={{
@@ -230,6 +231,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
           <span className="relative z-10">
             {loading ? "Sending..." : "Send Message"}

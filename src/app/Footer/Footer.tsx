@@ -35,7 +35,7 @@ export default function Footer() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center text-sm md:text-base"
-        >
+          >
           Developed by{" "}
           <span className="font-semibold text-cyan-400">Youssef Shoukry</span>
         </motion.p>
