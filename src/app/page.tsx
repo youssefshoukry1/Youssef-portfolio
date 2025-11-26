@@ -157,7 +157,7 @@ export default function Home() {
           />
           <Image
             className="rounded-full object-cover shadow-[0_0_40px_rgba(59,130,246,0.6)]"
-            src="https://res.cloudinary.com/djkxs77gs/image/upload/v1759244016/Ofaa7_b3cczd.webp"
+            src="https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764119557/Snapchat-2125464010_n66wek.jpg"
             alt="My Photo"
             fill
             priority
