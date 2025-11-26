@@ -13,23 +13,23 @@ import "swiper/css/pagination";
 
 export default function Page() {
   const projects = [
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242384/food_g8pjxh.webp", href: "https://final-food-app-xi.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242387/ecomeerce_n2ohpe.webp", href: "http://ecommerce-cwzh.vercel.app" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118513/Food_u7v8dv.png", href: "https://final-food-app-xi.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118147/E-commerce_vdn2b9.png", href: "http://ecommerce-cwzh.vercel.app" },
     {
-      img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242390/real-estate_k9ukmx.webp",
+      img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118582/Real_state_bqvzwn.png",
       href: "https://real-estate-theta-blond.vercel.app/",
     },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242387/to-do_fv9o4y.webp", href: "https://to-do-list-0.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242387/x_o_uqy74x.webp", href: "https://x-o-rose.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242387/weather_t29odj.webp", href: "https://weather-flft.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118105/to-do-list_fsb2rl.png", href: "https://to-do-list-0.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118114/x-o_jugiw5.png", href: "https://x-o-rose.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118105/wheather_z6hsrc.png", href: "https://weather-flft.vercel.app/" },
   ];
 
   const portfolios = [
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242385/joyce_ypxsuy.webp", href: "https://joyce-portfolio-five.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242385/marco_ikneqo.webp", href: "https://marco-portfolio-ten.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242385/marcen_syiitg.webp", href: "https://portfolio-marcelino.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242385/emy_jydjy6.webp", href: "https://protofilo-sable.vercel.app/" },
-    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/v1759242387/shery_ziqsut.webp", href: "https://shery-portfolio-eta.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118180/joyce_btnto0.png", href: "https://joyce-portfolio-five.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118203/marco_alikmi.png", href: "https://marco-portfolio-ten.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118164/marcleno_dkucab.png", href: "https://portfolio-marcelino.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118133/emy_umjdb5.png", href: "https://protofilo-sable.vercel.app/" },
+    { img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118105/shery_ujafwd.png", href: "https://shery-portfolio-eta.vercel.app/" },
   ];
 
   const ProjectsSlider = ({
