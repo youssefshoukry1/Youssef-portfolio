@@ -9,8 +9,15 @@ import {
   FaBootstrap,
   FaSass,
   FaFigma,
+  FaNodeJs,
 } from "react-icons/fa";
-import { SiTypescript, SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiMongodb,
+  SiExpress,
+} from "react-icons/si";
 
 export default function About() {
   const skills = [
@@ -23,6 +30,9 @@ export default function About() {
     { icon: FaBootstrap, color: "text-purple-500" },
     { icon: FaSass, color: "text-pink-400" },
     { icon: SiNextdotjs, color: "text-white" },
+    { icon: FaNodeJs, color: "text-green-500" },
+    { icon: SiMongodb, color: "text-green-500" },
+    { icon: SiExpress, color: "text-gray-300" },
     { icon: FaFigma, color: "text-pink-500" },
   ];
 
@@ -41,7 +51,7 @@ export default function About() {
         cy: Math.random() * 600,
         r: 1 + Math.random() * 3,
         dur: 15 + Math.random() * 15,
-      }))
+      })),
     );
 
     setLines(
@@ -57,7 +67,7 @@ export default function About() {
           y2,
           dur: 20 + Math.random() * 20,
         };
-      })
+      }),
     );
   }, []);
 
@@ -153,9 +163,9 @@ export default function About() {
           transition={{ delay: 0.3, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          I mastered Front-End development in 9 months through YouTube and
-          self-learning. I’m passionate about technology, a fast learner, and
-          always eager to push myself to achieve more.
+          Full-Stack MERN Developer with 2+ years of experience using Next.js,
+          React, Node.js, MongoDB, and Tailwind CSS, focused on performance and
+          scalability.
         </motion.p>
 
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-6 justify-center items-center mt-6">

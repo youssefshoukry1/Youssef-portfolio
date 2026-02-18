@@ -1,22 +1,147 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import About from "./About/page";
 import Projects from "./Projects/page";
 import Contact from "./Contact/page";
 
+// ── CV Download Button ────────────────────────────────────────────────────────
+// Sits bottom-left. Shows only the icon by default; expands on hover/focus
+// to reveal the label. Collapses back when the user moves away.
+const CVButton = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.a
+      href="/Youssef_Shoukry_CV.pdf"
+      download
+      onHoverStart={() => setExpanded(true)}
+      onHoverEnd={() => setExpanded(false)}
+      onFocus={() => setExpanded(true)}
+      onBlur={() => setExpanded(false)}
+      className="fixed bottom-7 left-7 z-50 flex items-center gap-0 rounded-2xl border border-white/10 bg-[#0d1424]/80 backdrop-blur-xl cursor-pointer overflow-hidden"
+      style={{
+        boxShadow: expanded
+          ? "0 0 0 1px rgba(139,92,246,0.4), 0 8px 32px rgba(139,92,246,0.25), 0 2px 8px rgba(0,0,0,0.4)"
+          : "0 0 0 1px rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.35)",
+      }}
+      initial={{ opacity: 0, x: -24 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 1.6, ease: "easeOut" }}
+      whileTap={{ scale: 0.94 }}
+    >
+      {/* spinning gradient border ring — only when expanded */}
+      <AnimatePresence>
+        {expanded && (
+          <motion.span
+            className="pointer-events-none absolute inset-0 rounded-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              background:
+                "conic-gradient(from 0deg, #22d3ee22, #a855f722, #ec489922, #22d3ee22)",
+              animation: "spin 4s linear infinite",
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* icon pill — always visible */}
+      <span className="relative z-10 flex items-center justify-center w-11 h-11 shrink-0">
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-5 h-5"
+          animate={expanded ? { y: [0, 2, 0] } : { y: 0 }}
+          transition={{
+            duration: 1.2,
+            repeat: expanded ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        >
+          <defs>
+            <linearGradient id="cvIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#a855f7" />
+            </linearGradient>
+          </defs>
+          <path stroke="url(#cvIconGrad)" d="M12 3v11" />
+          <path stroke="url(#cvIconGrad)" d="M7 10l5 5 5-5" />
+          <path stroke="url(#cvIconGrad)" d="M3 19h18" />
+        </motion.svg>
+      </span>
+
+      {/* expandable label */}
+      <motion.span
+        className="relative z-10 flex items-center gap-3 overflow-hidden pr-0"
+        initial={false}
+        animate={{
+          width: expanded ? "auto" : 0,
+          paddingRight: expanded ? 16 : 0,
+        }}
+        transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        {/* thin divider */}
+        <span className="w-px h-5 bg-white/10 shrink-0" />
+
+        <span className="whitespace-nowrap flex flex-col leading-tight">
+          <span className="text-[11px] font-semibold tracking-widest uppercase bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            Download
+          </span>
+          <span className="text-[10px] text-white/40 tracking-wide font-medium">
+            CV · PDF
+          </span>
+        </span>
+
+        {/* tiny arrow that slides in */}
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.8}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-3.5 h-3.5 text-white/30 shrink-0"
+          initial={{ x: -4, opacity: 0 }}
+          animate={{ x: expanded ? 0 : -4, opacity: expanded ? 1 : 0 }}
+          transition={{ duration: 0.25, delay: expanded ? 0.15 : 0 }}
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </motion.svg>
+      </motion.span>
+
+      {/* keyframes for conic spin */}
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+      `}</style>
+    </motion.a>
+  );
+};
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 export default function Home() {
   const letters = [
     { char: "F", color: "text-cyan-400" },
-    { char: "r", color: "text-purple-400" },
-    { char: "o", color: "text-pink-400" },
-    { char: "n", color: "text-indigo-400" },
-    { char: "t", color: "text-teal-400" },
-    { char: "e", color: "text-blue-400" },
-    { char: "n", color: "text-fuchsia-400" },
-    { char: "d", color: "text-emerald-400" },
+    { char: "u", color: "text-purple-400" },
+    { char: "l", color: "text-pink-400" },
+    { char: "l", color: "text-indigo-400" },
+    { char: "S", color: "text-teal-400" },
+    { char: "t", color: "text-blue-400" },
+    { char: "a", color: "text-fuchsia-400" },
+    { char: "c", color: "text-emerald-400" },
+    { char: "k", color: "text-emerald-400" },
   ];
 
   const scrollToAbout = () => {
@@ -26,7 +151,6 @@ export default function Home() {
     }
   };
 
-  // 🎯 حل مشكلة hydration: توليد القيم العشوائية على الكلاينت فقط
   const [circles, setCircles] = useState<
     { cx: number; cy: number; r: number; dur: number }[]
   >([]);
@@ -38,7 +162,7 @@ export default function Home() {
         cy: Math.random() * 600,
         r: 1 + Math.random() * 3,
         dur: 10 + Math.random() * 20,
-      }))
+      })),
     );
   }, []);
 
@@ -57,12 +181,11 @@ export default function Home() {
           {circles.map((c, i) => (
             <motion.circle
               key={i}
-              cx={c.cx} // ثابت
-              cy={c.cy} // ثابت
+              cx={c.cx}
+              cy={c.cy}
               r={c.r}
               fill="url(#grad)"
               animate={{
-                // نحركها بالترانسفورم بدل cx, cy
                 translateX: [0, 50, -50, 0],
                 translateY: [0, 50, -50, 0],
               }}
@@ -74,7 +197,6 @@ export default function Home() {
               }}
             />
           ))}
-
           <defs>
             <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
@@ -125,6 +247,9 @@ export default function Home() {
           </div>
         </motion.div>
 
+        {/* CV Download Button */}
+        <CVButton />
+
         {/* الصورة */}
         <motion.div
           className="relative w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 flex items-center justify-center"
@@ -167,7 +292,7 @@ export default function Home() {
 
         {/* العنوان */}
         <div className="flex flex-col items-center lg:items-start gap-4 sm:gap-6 text-center lg:text-left relative">
-          <h1 className="font-extrabold text-2xl sm:text-5xl lg:text-7xl flex flex-wrap gap-1 ">
+          <h1 className="font-extrabold text-2xl sm:text-5xl lg:text-7xl flex flex-wrap gap-1">
             {letters.map((l, i) => (
               <motion.span
                 key={i}
@@ -206,7 +331,6 @@ export default function Home() {
               animate={{ rotate: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             />
-
             <div className="flex flex-col items-center z-10">
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +354,6 @@ export default function Home() {
                   d="M19 9l-7 7-7-7"
                 />
               </motion.svg>
-
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
