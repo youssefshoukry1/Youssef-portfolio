@@ -49,7 +49,6 @@ const InfoIcon = () => (
 const SwipeHint = ({ color }: { color: "cyan" | "violet" }) => {
   const [visible, setVisible] = useState(true);
 
-
   const accent =
     color === "cyan"
       ? "text-cyan-400 border-cyan-400/30 bg-cyan-400/10"
@@ -97,14 +96,8 @@ const SwipeHint = ({ color }: { color: "cyan" | "violet" }) => {
 // ── Data ──────────────────────────────────────────────────────────────────────
 const projects = [
   {
-    img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118513/Food_u7v8dv.png",
-    href: "https://final-food-app-xi.vercel.app",
-    description:
-      "A full-featured food ordering app with cart, categories, and real-time search built with Next.js and Tailwind CSS.",
-  },
-  {
     img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1771373376/Screenshot_2026-02-18_020727_acendz.png",
-    href: "https://worship-team-psi.vercel.app",
+    href: "https://wasla-w.vercel.app",
     description:
       "A worship team scheduling platform to manage members, songs, and service rotations with ease.",
   },
@@ -113,6 +106,12 @@ const projects = [
     href: "https://bet-el-bon-sx18.vercel.app",
     description:
       "An Coffee Shop That Have An easy way to Order your coffee on the shop or delivery",
+  },
+  {
+    img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118513/Food_u7v8dv.png",
+    href: "https://final-food-app-xi.vercel.app",
+    description:
+      "A full-featured food ordering app with cart, categories, and real-time search built with Next.js and Tailwind CSS.",
   },
   {
     img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118147/E-commerce_vdn2b9.png",
@@ -148,12 +147,6 @@ const projects = [
 
 const portfolios = [
   {
-    img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118180/joyce_btnto0.png",
-    href: "https://joyce-portfolio-five.vercel.app/",
-    description:
-      "Personal portfolio for Joyce — a clean, animated showcase of her design and development work.",
-  },
-  {
     img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118203/marco_alikmi.png",
     href: "https://marco-portfolio-ten.vercel.app/",
     description:
@@ -176,6 +169,12 @@ const portfolios = [
     href: "https://shery-portfolio-eta.vercel.app/",
     description:
       "Shery's portfolio showcasing frontend projects with a vibrant gradient aesthetic.",
+  },
+  {
+    img: "https://res.cloudinary.com/djkxs77gs/image/upload/q_auto/f_auto/v1764118180/joyce_btnto0.png",
+    href: "https://joyce-portfolio-five.vercel.app/",
+    description:
+      "Personal portfolio for Joyce — a clean, animated showcase of her design and development work.",
   },
 ];
 
