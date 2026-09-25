@@ -278,7 +278,7 @@ const ProjectsSlider = ({ items }: { items: CardItem[] }) => (
       grabCursor
       speed={700}
       centeredSlides
-      initialSlide={1}
+      initialSlide={0}
       slidesPerView={4}
       coverflowEffect={{
         rotate: 35,
@@ -328,7 +328,7 @@ const PortfoliosSlider = ({ items }: { items: CardItem[] }) => {
         grabCursor
         speed={700}
         centeredSlides
-        initialSlide={1}
+        initialSlide={0}
         slidesPerView={4}
         coverflowEffect={{
           rotate: 45,
