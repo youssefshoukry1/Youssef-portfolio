@@ -163,7 +163,8 @@ export default function About() {
           transition={{ delay: 0.3, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Full-Stack MERN Developer using Next.js,React, Node.js, MongoDB, Express and Tailwind CSS, focused on performance and scalability.
+          Full-Stack MERN Developer using Next.js,React, Node.js, MongoDB,
+          Express and Tailwind CSS, focused on performance and scalability.
         </motion.p>
 
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-6 justify-center items-center mt-6">

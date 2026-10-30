@@ -22,7 +22,7 @@ export default function Contact() {
         cy: Math.random() * 600,
         r: 1 + Math.random() * 3,
         dur: 12 + Math.random() * 15,
-      }))
+      })),
     );
   }, []);
 
@@ -37,7 +37,7 @@ export default function Contact() {
         "service_tbxzka8", // Service ID
         "template_53t0t05", // Template ID
         form.current,
-        "hQmjB4HHyBLjT9a2V" // Public Key
+        "hQmjB4HHyBLjT9a2V", // Public Key
       )
 
       .then(
@@ -49,7 +49,7 @@ export default function Contact() {
         () => {
           setLoading(false);
           setError(true);
-        }
+        },
       );
   };
 
